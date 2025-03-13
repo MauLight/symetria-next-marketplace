@@ -13,7 +13,7 @@ export default function Page(): JSX.Element {
                 autoPlay
                 src="/Sign_video1.webm"
                 className='w-full h-screen object-cover'
-            ></video>
+            />
         </div>
     )
 }

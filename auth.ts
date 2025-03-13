@@ -3,7 +3,7 @@ import { authConfig } from "./auth.config"
 import Credentials from 'next-auth/providers/credentials'
 import Google from 'next-auth/providers/google'
 import { z } from "zod"
-import bcrypt from 'bcrypt'
+import bcryptjs from 'bcryptjs'
 
 import mongoose from "mongoose"
 import User from '@/api/models/User'
@@ -34,7 +34,7 @@ export const { auth, signIn, signOut } = NextAuth({
                     const { email, password } = parsedCredentials.data
                     const user = await getUser(email)
                     if (!user) return null;
-                    const passwordsMatch = await bcrypt.compare(password, user.passwordHash)
+                    const passwordsMatch = await bcryptjs.compare(password, user.passwordHash)
 
                     if (passwordsMatch) return user
                 }
