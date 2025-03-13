@@ -4,5 +4,5 @@ export default function Home() {
     <main className="w-full h-screen flex justify-center items-center text-[2rem]">
       Marketplace
     </main>
-  );
+  )
 }
