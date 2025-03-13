@@ -7,6 +7,7 @@ import User from "./models/User"
 import mongoose from "mongoose"
 import bcrypt from "bcryptjs"
 import { redirect } from "next/navigation"
+import { toast } from "react-toastify"
 
 export async function register(formData: FormData) {
     const firstname = formData.get('firstname')
@@ -17,6 +18,7 @@ export async function register(formData: FormData) {
 
     const isPasswordInvalid = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/.test(password as string)
     if (isPasswordInvalid) {
+        toast.error('Invalid password.')
         return { error: 'Invalid password.' }
     }
 
@@ -25,9 +27,11 @@ export async function register(formData: FormData) {
         const phoneExists = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ phone })
         const emailExists = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email })
         if (phoneExists) {
+            toast.error('Phone number already exists.')
             return { error: 'Phone number already exists.' }
         }
         if (emailExists) {
+            toast.error('Email already exists.')
             return { error: 'Email already exists.' }
         }
 
@@ -43,6 +47,7 @@ export async function register(formData: FormData) {
         })
     } catch (error) {
         console.error(error)
+        toast.error('Failed to create user.')
         return { error: 'Database Error: Failed to create user.' }
     }
 
