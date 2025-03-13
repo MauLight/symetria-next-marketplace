@@ -13,7 +13,7 @@ export default function Topbar() {
                         <input className='w-[250px] h-10 border border-[#292929] text-[#fff] outline-none pl-12' type="text" />
                         <MagnifyingGlassIcon className='absolute top-2 text-gray-500 group-hover:text-[#fff] left-2 w-7 h-7 transition-color duration-300' />
                     </div>
-                    <Link href='/'>
+                    <Link className='text-[#a1a1a1] hover:text-[#fff] transition-color duration-300' href='/'>
                         Profile
                     </Link>
 
