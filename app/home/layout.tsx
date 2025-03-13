@@ -4,7 +4,7 @@ import Topbar from "@/app/ui/topbar"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="relative w-full min-h-screen">
+        <div className="relative w-full min-h-screen bg-black">
 
             <Topbar />
 
