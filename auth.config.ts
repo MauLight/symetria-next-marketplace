@@ -8,13 +8,16 @@ export const authConfig = {
     callbacks: {
         authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user
-            const isOnHome = nextUrl.pathname.startsWith('/home')
-            if (isOnHome) {
-                if (isLoggedIn) return true
-                return false    //* Redirect unauthenticated users to login page
-            } else if (isLoggedIn) {
-                return Response.redirect(new URL('/home', nextUrl))
-            }
+            const { pathname } = nextUrl
+
+            //* Allow access to public routes
+            if (pathname.startsWith('/login') || pathname.startsWith('/signup')) return true
+
+            //* Check if user is logged in if protected routes
+            if (pathname.startsWith('/home')) return isLoggedIn
+
+            //* Redirect to login if not logged in
+            return isLoggedIn ? Response.redirect(new URL('/home', nextUrl)) : false
         }
     }
 } satisfies NextAuthConfig
