@@ -95,6 +95,8 @@ userSchema.set('toJSON', {
     }
 })
 
-const User = mongoose.model('User', userSchema)
+console.log(mongoose.models)
 
-export default User
+const User = mongoose.models ? mongoose.models.User : mongoose.model('User', userSchema)
+
+export default User || mongoose.model('User', userSchema)

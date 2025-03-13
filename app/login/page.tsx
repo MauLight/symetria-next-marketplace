@@ -7,13 +7,11 @@ export default function Page(): JSX.Element {
             <Suspense fallback={<LoginFallback />}>
                 <LoginForm />
             </Suspense>
-            <video
-                loop
-                muted
-                autoPlay
-                src="/Sign_video1.webm"
-                className='w-full h-screen object-cover'
-            />
+            <div className='w-full h-screen bg-black'></div>
+            <video loop muted autoPlay playsInline className='w-full h-screen object-cover'>
+                <source src="/Sign_video1.webm" type="video/webm" />
+                Your browser does not support the video tag.
+            </video>
         </div>
     )
 }

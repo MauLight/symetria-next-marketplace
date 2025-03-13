@@ -7,13 +7,14 @@ import bcryptjs from 'bcryptjs'
 
 import mongoose from "mongoose"
 import User from '@/api/models/User'
+import dbConnect from "./api/mongoose"
 
 
 async function getUser(email: string): Promise<InstanceType<typeof User> | null> {
+
     try {
-        await mongoose.connect(process.env.MONGODB_URI!)
-        const user = await User.findOne({ email })
-        await mongoose.disconnect()
+        await dbConnect()
+        const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email })
         return user
     } catch (error) {
         console.error('Failed to fetch user:', error);
