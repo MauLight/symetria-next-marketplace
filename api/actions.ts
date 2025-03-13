@@ -8,19 +8,68 @@ import mongoose from "mongoose"
 import bcrypt from "bcryptjs"
 import { redirect } from "next/navigation"
 import { toast } from "react-toastify"
+import { z } from "zod"
 
-export async function register(formData: FormData) {
-    const firstname = formData.get('firstname')
-    const lastname = formData.get('lastname')
-    const email = formData.get('email')
-    const phone = formData.get('phone')
-    const password = formData.get('password')
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+) {
+    try {
 
-    const isPasswordInvalid = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/.test(password as string)
-    if (isPasswordInvalid) {
-        toast.error('Invalid password.')
-        return { error: 'Invalid password.' }
+        await signIn('credentials', formData)
+    } catch (error) {
+        if (error instanceof AuthError) {
+            switch (error.type) {
+                case 'CredentialsSignin':
+                    return 'Invalid credentials.'
+                default:
+                    return 'Something went wrong.'
+            }
+        }
+        throw error
     }
+}
+
+const UserSchema = z.object({
+    firstname: z.string({ invalid_type_error: 'First name is required.' }),
+    lastname: z.string({ invalid_type_error: 'Last name is required.' }),
+    email: z.string({ invalid_type_error: 'Email is required.' }).email(),
+    phone: z.string({ invalid_type_error: 'Phone number is required.' }),
+    password: z.string({ invalid_type_error: 'Password is required' }).regex(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
+        "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit."
+    ),
+})
+
+export type State = {
+    errors?: {
+        firstname?: string[]
+        lastname?: string[]
+        email?: string[]
+        phone?: string[]
+        password?: string[]
+    },
+    message?: string | null
+}
+
+export async function register(prevState: State, formData: FormData) {
+
+    const validatedFields = UserSchema.safeParse({
+        firstname: formData.get('firstname'),
+        lastname: formData.get('lastname'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        password: formData.get('password'),
+    })
+
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: 'Missing Fields. Failed to Create User.',
+        }
+    }
+
+    const { firstname, lastname, email, phone, password } = validatedFields.data
 
     try {
         await dbConnect()
@@ -51,25 +100,13 @@ export async function register(formData: FormData) {
         return { error: 'Database Error: Failed to create user.' }
     }
 
-    redirect('/dashboard/invoices')
+    redirect('/login?from=register')
 }
 
-export async function authenticate(
-    prevState: string | undefined,
-    formData: FormData,
-) {
-    try {
-
-        await signIn('credentials', formData)
-    } catch (error) {
-        if (error instanceof AuthError) {
-            switch (error.type) {
-                case 'CredentialsSignin':
-                    return 'Invalid credentials.'
-                default:
-                    return 'Something went wrong.'
-            }
-        }
-        throw error
-    }
+interface User {
+    firstname: string
+    lastname: string
+    email: string
+    phone: number
+    password: string
 }

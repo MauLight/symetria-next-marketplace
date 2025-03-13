@@ -1,15 +1,24 @@
 'use client'
 
-import { useActionState } from "react"
+import { useActionState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import { authenticate } from "@/api/actions"
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline"
+import { toast } from "react-toastify"
 
 export default function LoginForm() {
 
     const searchParams = useSearchParams()
+    const from = searchParams.get("from")
+
     const callbackUrl = searchParams.get('callbackUrl') || '/'
     const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined)
+
+    useEffect(() => {
+        if (from) {
+            toast.success('User created succesfully.')
+        }
+    }, [from])
 
     return (
         <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center'>
@@ -36,7 +45,7 @@ export default function LoginForm() {
                     <button aria-disabled={isPending} type='submit' className='w-full h-10 font-body text-[16px] text-[#fff] mt-1 uppercase bg-[#10100e] hover:bg-indigo-500 active:bg-[#10100e]'>Log in</button>
                     <div className="flex justify-center items-center pt-2">
                         <div className="w-full border-b border-gray-300"></div>
-                        <p className='text-[14px] font-body text-gray-500 px-5 uppercase'>or</p>
+                        <p className='text-[14px] font-body text-gray-500 px-5 uppercase'>marketplace</p>
                         <div className="w-full border-b border-gray-300"></div>
                     </div>
                 </form>
