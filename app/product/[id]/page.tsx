@@ -30,7 +30,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                             <h1 className="text-[2rem] text-[#ededed]">{product.title}</h1>
                             <div className="w-full border-b border-[#292929]"></div>
                             <div className="relative">
-                                <p className="text-[#ededed] text-[1.3rem]">{`$${getPercentage(product)}`}</p>
+                                <p className="text-[#ededed] text-[1.3rem]">{`$${getPercentage(product.discount, product.price)}`}</p>
                                 <div className="absolute top-0 left-24 py-1 px-2 animated-background bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-[0.9rem] rounded-[6px]">{`${product.discount}% OFF`}</div>
                             </div>
                         </div>
