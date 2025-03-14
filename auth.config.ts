@@ -11,10 +11,10 @@ export const authConfig = {
             const { pathname } = nextUrl
 
             //* Allow access to public routes
-            if (pathname.startsWith('/login') || pathname.startsWith('/signup')) return true
+            if (pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname.startsWith('/home') || pathname.startsWith('/product')) return true
 
             //* Check if user is logged in if protected routes
-            if (pathname.startsWith('/home') || pathname.startsWith('/product') || pathname.startsWith('/cart')) return isLoggedIn
+            if (pathname.startsWith('/cart') || pathname.startsWith('/profile')) return isLoggedIn
 
             //* Redirect to login if not logged in
             return isLoggedIn ? Response.redirect(new URL('/home', nextUrl)) : false

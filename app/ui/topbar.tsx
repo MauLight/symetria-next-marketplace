@@ -17,7 +17,7 @@ export default function Topbar() {
                         <MagnifyingGlassIcon className='absolute top-2 text-gray-500 group-hover:text-[#ededed] left-2 w-7 h-7 transition-color duration-300' />
                     </div>
 
-                    <Link className='flex gap-x-2 items-center text-[#a1a1a1] hover:text-[#ededed] transition-color duration-300' href='/'>
+                    <Link className='flex gap-x-2 items-center text-[#a1a1a1] hover:text-[#ededed] transition-color duration-300' href='/profile'>
                         <UserIcon className="w-4 h-4" />
                         Profile
                     </Link>
