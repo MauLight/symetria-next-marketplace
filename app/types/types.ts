@@ -127,8 +127,8 @@ export interface StoreProps {
         error: string
     }
     userAuth: {
-        user: Record<string, any>
-        client: Record<string, any>
+        user: Record<string, string>
+        client: Record<string, string>
         userData: UserProps
         isLoading: boolean
         hasError: boolean
@@ -139,12 +139,12 @@ export interface StoreProps {
     cart: {
         cart: Array<CartItemProps>,
         readyToPay: boolean
-        transbank: Record<string, any>
+        transbank: Record<string, string>
         isLoading: boolean
         hasError: boolean
         total: number
         totalWithCourier: number
-        courierFee: Record<string, any>
+        courierFee: Record<string, string>
     }
     homeCollection: {
         collection: Array<ProductProps>
@@ -157,8 +157,8 @@ export interface StoreProps {
         hasError: boolean
     }
     courier: {
-        counties: any[],
-        regions: any[],
+        counties: string[],
+        regions: string[],
         quote: QuotesProps[]
         isLoading: boolean,
         hasError: boolean
@@ -271,16 +271,16 @@ export interface RegionProps {
 
 export interface DropdownProps {
     id?: string
-    value: any
-    setValue: any
+    value: string
+    setValue: (value: string) => void
     list: string[]
-    defaultValue?: any
+    defaultValue?: string
     loading?: boolean
     error?: boolean
 }
 
 export interface QuotesProps {
-    additionalServices: any[]
+    additionalServices: string[]
     conditions: string
     deliveryType: number
     didUseVolumetricWeight: boolean

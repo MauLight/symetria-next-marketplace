@@ -4,6 +4,7 @@ import dbConnect from "@/api/mongoose"
 import Product from "@/api/models/Product"
 import mongoose from "mongoose"
 import { ProductProps } from "../types/types"
+import ProductCard from "./components/product-card"
 
 //* Connect to the database and list all products
 async function listProducts() {
@@ -25,7 +26,7 @@ export default async function Page() {
     const products = await listProducts()
 
     return (
-        <>
+        <div className="flex flex-col gap-y-20">
             <section className="relative h-[950px] w-full flex justify-center items-center overflow-hidden">
 
                 {/* Render a list of blocks colored in gradient, covered in gradients */}
@@ -67,6 +68,13 @@ export default async function Page() {
                     }
                 </div>
             </section>
-        </>
+            <section className="w-[1440px] grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
+                {
+                    products?.map((product: ProductProps) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))
+                }
+            </section>
+        </div>
     )
 }
