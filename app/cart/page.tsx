@@ -1,7 +1,8 @@
-import Image from 'next/image'
 import React from 'react'
+import CartList from './components/cart-list'
 
 export default function Page() {
+
     return (
         <div className='w-full h-screen flex justify-center items-start mt-[60px]'>
             <div className="w-full max-w-[1440px] flex flex-col gap-y-20 py-10">
@@ -11,29 +12,7 @@ export default function Page() {
                 </div>
                 <div className="grid grid-cols-3 gap-x-5">
 
-                    <div className='col-span-2 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5'>
-                        <div className="grid grid-cols-4 gap-x-5">
-                            <div className="col-span-1 border">
-                                <Image src={'https://placehold.co/600x400/000000/FFFFFF.png'} width={600} height={400} alt='placeholder' />
-                            </div>
-                            <div className="col-span-3 flex justify-between border border-[#dfdfdf] rounded-[6px] p-2">
-                                <div className="flex flex-col">
-                                    <h1 className='text-[1.4rem]'>Product Title</h1>
-                                    <p>$1000000</p>
-                                </div>
-                                <div className="flex flex-col gap-y-2">
-                                    <p>Quantity</p>
-                                    <div className='w-[80px]  border border-[#dfdfdf] rounded-[6px] flex items-center justify-between px-2'>
-                                        <p className='text-[1.5rem]'>1</p>
-                                        <div className='flex flex-col text-[1.5rem]'>
-                                            <button>+</button>
-                                            <button>-</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <CartList />
 
                     <div className="col-span-1 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5">
                         <h1 className='text-[1.5rem]'>Summary</h1>

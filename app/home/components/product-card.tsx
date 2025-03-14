@@ -16,6 +16,7 @@ export default async function ProductCard({ product }: { product: ProductProps }
                 title={product.title}
                 discount={product.discount as number}
                 price={product.price}
+                image={product.images[0].image}
             />
 
             <div className='w-full h-full absolute top-0 left-0 bg-gradient-to-t from-black via-transparent via-50% to-transparent opacity-50'>

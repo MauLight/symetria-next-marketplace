@@ -6,6 +6,7 @@ interface DescriptionProps {
     title: string;
     discount: number;
     price: number;
+    image: string;
 }
 
 
@@ -19,13 +20,15 @@ export function getPercentage(discount: number, price: number) {
 //* If the product is already in the cart, update the quantity
 //* If the product is not in the cart, add it
 //* Show a toast message
-export function addToCart({ id, title, discount, price }: DescriptionProps) {
+export function addToCart({ id, title, discount, price, image }: DescriptionProps) {
 
     const product = {
         id,
         title,
         discount,
-        price
+        price,
+        image,
+        quantity: 1
     }
 
     const cart = localStorage.getItem('marketplace-cart')
@@ -36,7 +39,7 @@ export function addToCart({ id, title, discount, price }: DescriptionProps) {
         if (productIndex === -1) {
             cartItems.push(product)
         } else {
-            cartItems[productIndex] = product
+            cartItems[productIndex] = { ...product, quantity: cartItems[productIndex].quantity + 1 }
         }
         localStorage.setItem('marketplace-cart', JSON.stringify(cartItems))
     } else {

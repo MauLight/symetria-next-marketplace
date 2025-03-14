@@ -3,6 +3,7 @@ import Product from "@/api/models/Product"
 import mongoose from "mongoose"
 import Image from "next/image"
 import { getPercentage } from "@/app/functions/functions"
+import CartButtons from "../components/cart-buttons"
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
 
@@ -36,13 +37,15 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         </div>
 
                         <p className="text-[#eaeaea] text-balance">{product.description}</p>
-                    </div>
 
-                    <div className="flex gap-x-5">
-                        <button className="text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300">Wishlist</button>
-                        <button className="text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300">Add to cart</button>
                     </div>
-
+                    <CartButtons
+                        id={product.id}
+                        title={product.title}
+                        discount={product.discount as number}
+                        price={product.price}
+                        image={product.images[0].image}
+                    />
                 </div>
 
             </div>
