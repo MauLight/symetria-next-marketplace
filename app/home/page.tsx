@@ -11,8 +11,6 @@ async function listProducts() {
     try {
         await dbConnect()
         const products = await (Product as mongoose.Model<InstanceType<typeof Product>>).find({})
-
-        console.log(products)
         return products
     } catch (error) {
         console.log(error)
