@@ -2,6 +2,8 @@ import Product from "@/api/models/Product"
 import dbConnect from "@/api/mongoose"
 import mongoose from "mongoose"
 
+export const dynamic = 'force-static'
+
 async function listProducts() {
     await dbConnect()
     const products = await (Product as mongoose.Model<InstanceType<typeof Product>>).find({})

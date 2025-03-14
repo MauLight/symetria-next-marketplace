@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function Topbar() {
     return (
-        <nav className="fixed w-full flex justify-center items-center">
+        <nav className="fixed w-full flex justify-center items-center z-20">
             <div className='w-[1440px] h-[60px] flex justify-between items-center border-b border-[#292929]'>
                 <Link href={'/home'}>
                     <h1 className='text-[1.1rem] text-[#fff]'>Marketplace</h1>
