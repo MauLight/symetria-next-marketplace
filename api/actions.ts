@@ -9,7 +9,6 @@ import bcrypt from "bcryptjs"
 import { redirect } from "next/navigation"
 import { toast } from "react-toastify"
 import { z } from "zod"
-import Product from "./models/Product"
 
 export async function authenticate(
     prevState: string | undefined,
@@ -109,15 +108,4 @@ interface User {
     email: string
     phone: number
     password: string
-}
-
-export async function getProducts() {
-    try {
-        await dbConnect()
-        const products = await (Product as mongoose.Model<InstanceType<typeof Product>>).find({})
-        return products
-    } catch (error) {
-        console.error(error)
-        return []
-    }
 }
