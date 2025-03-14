@@ -7,7 +7,9 @@ export default function Topbar() {
     return (
         <nav className="fixed w-full flex justify-center items-center">
             <div className='w-[1440px] h-[60px] flex justify-between items-center border-b border-[#292929]'>
-                <h1 className='text-[1.1rem] text-[#fff]'>Marketplace</h1>
+                <Link href={'/home'}>
+                    <h1 className='text-[1.1rem] text-[#fff]'>Marketplace</h1>
+                </Link>
                 <div className='flex items-center gap-x-5'>
                     <div className='relative group'>
                         <input className='w-[250px] h-10 border border-[#292929] text-[#fff] outline-none pl-12' type="text" />
