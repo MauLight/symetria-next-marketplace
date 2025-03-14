@@ -14,7 +14,7 @@ export const authConfig = {
             if (pathname.startsWith('/login') || pathname.startsWith('/signup')) return true
 
             //* Check if user is logged in if protected routes
-            if (pathname.startsWith('/home') || pathname.startsWith('/product')) return isLoggedIn
+            if (pathname.startsWith('/home') || pathname.startsWith('/product') || pathname.startsWith('/cart')) return isLoggedIn
 
             //* Redirect to login if not logged in
             return isLoggedIn ? Response.redirect(new URL('/home', nextUrl)) : false

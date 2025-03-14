@@ -35,7 +35,7 @@ export default async function ProductCard({ product }: { product: ProductProps }
                     <button aria-label='wishlist'>
                         <HeartIcon className='w-5 h-5 text-[#fff]' />
                     </button>
-                    <button aria-label='add to cart' className='h-[50px] w-[50px] antialiased rounded-full bg-gray-900 border-t border-sym_gray-300 shadow-sm shadow-sym_gray-800 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 flex justify-center items-center cursor-pointer text-[#ffffff] hover:text-indigo-500'>
+                    <button aria-label='add to cart' className='h-[50px] w-[50px] antialiased rounded-full bg-black border-t border-sym_gray-300 shadow-sm shadow-sym_gray-800 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 flex justify-center items-center cursor-pointer text-[#ffffff] hover:text-indigo-500'>
                         <ShoppingCartIcon className='w-5 h-5 text-[#fff]' />
                     </button>
                 </div>

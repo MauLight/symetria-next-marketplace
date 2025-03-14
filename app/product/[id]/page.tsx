@@ -4,15 +4,12 @@ import mongoose from "mongoose"
 import Image from "next/image"
 import { getPercentage } from "@/app/functions/functions"
 
-type PageProps = {
-    params: {
-        id: string
-    }
-}
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
 
-export default async function ProductPage({ params }: PageProps) {
+    const urlParams = await params
+    const id = urlParams.id
     await dbConnect()
-    const product = await (Product as mongoose.Model<InstanceType<typeof Product>>).findById(params.id)
+    const product = await (Product as mongoose.Model<InstanceType<typeof Product>>).findById(id)
 
     if (!product) {
         return <div>Product not found.</div>
