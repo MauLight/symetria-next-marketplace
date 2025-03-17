@@ -3,6 +3,7 @@
 import { useCart } from '@/app/context/cartContext';
 import { getPercentage } from '@/app/functions/functions';
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 interface DescriptionProps {
@@ -28,7 +29,9 @@ export default function CartList() {
                         </div>
                         <div className="col-span-3 flex justify-between border border-[#dfdfdf] rounded-[6px] py-2 px-5">
                             <div className="flex flex-col">
-                                <h1 className='text-[1.4rem]'>{product.title}</h1>
+                                <Link href={`/product/${product.id}`}>
+                                    <h1 className='text-[1.4rem]'>{product.title}</h1>
+                                </Link>
                                 <p>{`$${getPercentage(product.discount, product.price)}`}</p>
                             </div>
                             <div className="flex flex-col gap-y-2">

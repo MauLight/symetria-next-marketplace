@@ -18,8 +18,6 @@ async function listProducts() {
     }
 }
 
-
-
 export default async function Page() {
 
     const products = await listProducts()
