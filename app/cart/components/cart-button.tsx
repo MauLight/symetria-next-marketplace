@@ -1,4 +1,5 @@
 'use client'
+import axios from 'axios'
 import { v4 as uuid } from 'uuid'
 
 export default function CartButton({ total }: { total: number }) {
@@ -7,10 +8,15 @@ export default function CartButton({ total }: { total: number }) {
 
     async function handleTransbankCreateTransaction() {
         const sessionId = `session-${Date.now().toString()}-${uuid()}`
-        const paymentInformation = { amount: total, sessionId }
+        const paymentInformation = { sessionId, amount: total }
 
-        console.log(paymentInformation)
-        //localStorage.setItem('marketplace-order', payload.buyOrder)
+        try {
+            const { data } = await axios.post(`http://localhost:3000/api/transbank`, paymentInformation)
+            console.log(data)
+            localStorage.setItem('marketplace-order', data.buyOrder)
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
