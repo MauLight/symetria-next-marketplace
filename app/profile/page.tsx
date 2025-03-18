@@ -59,7 +59,7 @@ export default async function Page() {
                                             </div>
                                         </div>
                                         <button className="flex flex-col items-center text-[#a1a1a1] hover:text-green-500 transition-color duration-300">
-                                            <ShoppingCartIcon className="w-8 h-8" />
+                                            <ShoppingCartIcon className="w-6 h-6" />
                                             <small>Add to Cart</small>
                                         </button>
                                     </div>
