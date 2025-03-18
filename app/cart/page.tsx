@@ -1,5 +1,6 @@
 import React from 'react'
 import CartList from './components/cart-list'
+import CartSummary from './components/cart-summary'
 
 export default function Page() {
 
@@ -13,6 +14,7 @@ export default function Page() {
                 <div className="grid grid-cols-3 gap-x-5">
 
                     <CartList />
+                    <CartSummary />
 
                     <div className="col-span-1 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5">
                         <h1 className='text-[1.5rem]'>Summary</h1>
