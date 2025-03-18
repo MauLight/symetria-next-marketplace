@@ -32,11 +32,15 @@ export default async function Page() {
                 </div>
                 <div className="w-full grid grid-cols-3">
                     <UserInformation
+                        id={user.id}
                         firstname={user.firstname}
                         lastname={user.lastname}
                         email={user.email}
                         phone={user.phone}
                         street={user.street}
+                        street_number={user.street_number}
+                        house_number={user.house_number}
+                        state={user.state}
                         city={user.city}
                         country={user.country}
                         zipcode={user.zipcode}

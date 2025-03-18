@@ -10,7 +10,7 @@ export default function Topbar() {
                 <Link href={'/home'}>
                     <h1 className='text-[1.1rem] text-[#ededed]'>Marketplace</h1>
                 </Link>
-                <div className='flex items-center gap-x-6'>
+                <div className='flex items-center gap-x-6 text-[0.9rem]'>
 
                     <div className='relative group '>
                         <input className='w-[250px] h-10 border border-[#292929] text-[#ededed] outline-none pl-12' type="text" />
@@ -35,7 +35,7 @@ export default function Topbar() {
                     >
                         <button className="flex text-[#a1a1a1] hover:text-[#ededed] transition-color duration-300 items-center justify-center gap-x-2 px-2 cursor-pointer">
                             <PowerIcon className="w-4 h-4" />
-                            <div className="text-[1rem]">Sign Out</div>
+                            <div className="text-[0.9rem]">Sign Out</div>
                         </button>
                     </form>
                 </div>
