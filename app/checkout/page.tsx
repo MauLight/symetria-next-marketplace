@@ -23,7 +23,7 @@ export default async function Page() {
 
     return (
         <>
-            <div className="w-full h-full min-h-screen flex justify-center items-start pt-20 bg-black">
+            <div className="w-full h-full min-h-screen flex justify-center items-start pt-10 bg-black">
                 <div className="w-full max-w-[1440px]">
                     <ShippingOptions
                         id={user.id}

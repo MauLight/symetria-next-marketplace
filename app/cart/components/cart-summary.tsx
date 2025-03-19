@@ -14,7 +14,7 @@ export default function CartSummary() {
     const totalWithDiscount = discountedPrices.reduce((accumulator, currentPrice) => accumulator + currentPrice, 0)
 
     const vat = Math.floor(((totalWithDiscount / 100) * 19))
-    const totalWithVat = total + vat
+    const totalWithVat = totalWithDiscount + vat
 
     return (
         <div className="col-span-1 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5">
