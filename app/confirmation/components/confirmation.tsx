@@ -9,7 +9,7 @@ import Fallback from '@/app/ui/Fallback'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/app/context/cartContext'
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
+const backUrl = 'https://symetria.ngrok.io'
 
 export default function Confirmation({ userId }: { userId: string }) {
     const router = useRouter()
@@ -24,7 +24,7 @@ export default function Confirmation({ userId }: { userId: string }) {
     async function handleConfirmationAsync() {
 
         if (token && buyOrder !== '') {
-            const { data } = await axios.post(`${url}/api/transbank/confirm`, { userId, token, buyOrder })
+            const { data } = await axios.post(`${backUrl}/transbank/confirm`, { userId, token, buyOrder })
 
             if (data.status === 'AUTHORIZED') {
                 setIsLoading(false)
