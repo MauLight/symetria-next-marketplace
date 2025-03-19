@@ -1,21 +1,24 @@
 'use client'
 
+import { ProductProps } from '@/app/types/types'
 import { ShoppingCartIcon, TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
+
+interface WishlistButtonProps { userId: string, productId: string, setWishlist: Dispatch<SetStateAction<ProductProps[]>> }
 
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
-export default function WishlistButtons({ userId, productId }: { userId: string, productId: string }) {
+export default function WishlistButtons({ userId, productId, setWishlist }: WishlistButtonProps) {
 
     async function handleDeleteProduct() {
-        console.log(productId)
 
         try {
             const { data } = await axios.delete(`${url}/api/wishlist`, {
                 data: { userId, productId }
             })
             console.log(data)
+            setWishlist(data.wishlist)
         } catch (error) {
             console.error(error)
         }

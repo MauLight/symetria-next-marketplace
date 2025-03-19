@@ -12,7 +12,7 @@ const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '
 
 export default function Wishlist({ userId }: { userId: string }) {
 
-    const [wishlist, setWishlist] = useState([])
+    const [wishlist, setWishlist] = useState<ProductProps[]>([])
 
     useEffect(() => {
         async function getUserById() {
@@ -49,6 +49,7 @@ export default function Wishlist({ userId }: { userId: string }) {
                                         <WishlistButtons
                                             userId={userId}
                                             productId={product.id}
+                                            setWishlist={setWishlist}
                                         />
                                     </div>
                                 ))
