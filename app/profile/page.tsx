@@ -7,11 +7,7 @@ import dbConnect from "@/api/mongoose"
 import { auth } from "@/auth"
 import mongoose from "mongoose"
 import UserInformation from "./components/user-information"
-import { ProductProps } from "../types/types"
-import { getPercentage } from "../functions/functions"
-import Image from "next/image"
-import WishlistButtons from "./components/wishlist-buttons"
-import { PlusCircleIcon } from "@heroicons/react/24/outline"
+import Wishlist from "./components/wishlist";
 
 export default async function Page() {
 
@@ -21,7 +17,7 @@ export default async function Page() {
         try {
             await dbConnect()
 
-            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email }).populate('wishlist')
+            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email })
             return user
         } catch (error) {
             console.log(error)
@@ -53,43 +49,7 @@ export default async function Page() {
                         country={user.country}
                         zipcode={user.zipcode}
                     />
-                    <div className="col-span-2 flex flex-col gap-y-8 py-5 pr-5 pl-10 text-[#ededed] border-l border-[#292929]">
-                        <h1 className="text-[1.5rem]">Wishlist</h1>
-                        <>
-                            {
-                                user.wishlist.length > 0 ? (
-                                    <>
-                                        {
-                                            user.wishlist.map((product: ProductProps) => (
-                                                <div key={product.id} className="w-full h-[120px] flex items-center justify-between py-2 px-5 border border-[#292929] rounded-[6px]">
-                                                    <div className="flex gap-x-5">
-                                                        <div className="w-[100px] h-[100px] border border-[#292929]">
-                                                            <Image width={100} height={100} src={product.images[0].image} alt={product.title} />
-                                                        </div>
-                                                        <div className="flex flex-col justify-center">
-                                                            <h1 className="text-[1.2rem]">{product.title}</h1>
-                                                            <p className="text-[#a1a1a1]">${getPercentage(product.discount as number, product.price)}</p>
-                                                        </div>
-                                                    </div>
-                                                    <WishlistButtons
-                                                        userId={user.id}
-                                                        productId={product.id}
-                                                    />
-                                                </div>
-                                            ))
-                                        }
-                                    </>
-                                )
-                                    :
-                                    (
-                                        <div className="w-full flex flex-col gap-y-4 p-10 justify-center items-center border border-[#292929] rounded-[6px]">
-                                            <PlusCircleIcon className="w-[50px] h-[50px] text-[#292929]" />
-                                            <h2 className="text-[#ededed]">Add Items to your Wishlist.</h2>
-                                        </div>
-                                    )
-                            }
-                        </>
-                    </div>
+                    <Wishlist userId={user.id} />
                 </div>
             </section>
 
