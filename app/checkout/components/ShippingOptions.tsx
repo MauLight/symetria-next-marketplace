@@ -55,6 +55,9 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
         two: false
     })
 
+    const transbankStr = localStorage.getItem('transbank-order')
+    const transbank: { token: string, url: string, buyOrder: string } | null = transbankStr ? JSON.parse(transbankStr) : null
+
     function handleChangeStep() {
         if (one && !two) setCurrentStep({ one: false, two: true })
         else setCurrentStep({ one: true, two: false })
@@ -72,6 +75,7 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
         async function getCourier() {
             try {
                 const { data } = await axios.get('http://testservices.wschilexpress.com/georeference/api/v1/regions')
+                //@ts-expect-error region type missing
                 const currRegion = data.regions.find((region) => region.regionName === state)
                 console.log(currRegion)
                 if (currRegion.regionId) {
@@ -234,8 +238,8 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
                                     <Image width={150} height={44} className='w-full' src="https://res.cloudinary.com/maulight/image/upload/v1734712129/zds7cbfpfhfki1djh3wp.png" alt="webpay" />
                                 </div>
 
-                                <form method="post" action={''}>
-                                    <input type="hidden" name="token_ws" value={''} />
+                                <form method="post" action={transbank?.url}>
+                                    <input type="hidden" name="token_ws" value={transbank?.token} />
                                     <button type='submit' className='w-full h-8 flex justify-center items-center px-2 uppercase text-[#10100e] mt-3 transition-all duration-200 bg-[#ffffff] hover:bg-indigo-500 active:bg-[#ffffff] rounded-[6px]'>
                                         Pay
                                     </button>
