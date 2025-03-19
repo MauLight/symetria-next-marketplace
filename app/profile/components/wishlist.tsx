@@ -48,6 +48,10 @@ export default function Wishlist({ userId }: { userId: string }) {
                                         </div>
                                         <WishlistButtons
                                             userId={userId}
+                                            title={product.title}
+                                            discount={product.discount as number}
+                                            price={product.price}
+                                            image={product.images[0].image}
                                             productId={product.id}
                                             setWishlist={setWishlist}
                                         />
