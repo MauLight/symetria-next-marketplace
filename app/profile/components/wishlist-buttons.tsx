@@ -16,7 +16,8 @@ interface WishlistButtonProps {
     image: string;
 }
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
+const backUrl = 'https://symetria.ngrok.io'
+//const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function WishlistButtons({ userId, title, discount, price, image, productId, setWishlist }: WishlistButtonProps) {
 
@@ -35,9 +36,7 @@ export default function WishlistButtons({ userId, title, discount, price, image,
     async function handleDeleteProduct() {
 
         try {
-            const { data } = await axios.delete(`${url}/api/wishlist`, {
-                data: { userId, productId }
-            })
+            const { data } = await axios.post(`${backUrl}/auth/wishlist/delete`, { userId, productId })
             console.log(data)
             setWishlist(data.wishlist)
         } catch (error) {
