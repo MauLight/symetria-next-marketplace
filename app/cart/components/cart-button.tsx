@@ -13,8 +13,7 @@ export default function CartButton({ total }: { total: number }) {
         const paymentInformation = { sessionId, amount: total }
 
         try {
-            const { data } = await axios.post(`http://localhost:3000/api/transbank`, paymentInformation)
-            console.log(data)
+            const { data } = await axios.post(`http://localhost:3000/api/transbank/create`, paymentInformation)
             localStorage.setItem('transbank-order', JSON.stringify(data))
 
             if (data.buyOrder) {

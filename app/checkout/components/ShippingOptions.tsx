@@ -26,7 +26,7 @@ const paymentSteps = [
 ]
 
 export default function ShippingOptions({ id, firstname, lastname, email, phone, street, street_number, house_number, state, city, country, zipcode }: {
-    id: string,
+    id: string;
     firstname: string;
     lastname: string;
     email: string;
@@ -67,7 +67,6 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
         setSelectedCourier(e.target.value)
         console.log(e.target.value)
         console.log(quo)
-        //setWasChosen(true)
     }
 
     useEffect(() => {
