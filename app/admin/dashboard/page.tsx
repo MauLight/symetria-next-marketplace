@@ -31,7 +31,7 @@ const CloudinaryCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUDNAME
 const CloudinaryAPIKEY = process.env.NEXT_PUBLIC_CLOUDINARY_APIKEY
 const backUrl = 'https://symetria.ngrok.io'
 
-export const productSchema = yup.object().shape({
+const productSchema = yup.object().shape({
     title: yup.string().required('Title is required'),
     brand: yup.string().required(),
     description: yup.string().required('Description is required'),
