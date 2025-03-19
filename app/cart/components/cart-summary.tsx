@@ -10,8 +10,6 @@ export default function CartSummary() {
     const prices = cart.map((product) => product.price)
     const discountedPrices = cart.map((product) => getPercentage(product.discount, product.price))
 
-    // const vat = cart.reduce((accumulator, currProduct) => currProduct.discount > accumulator ? currProduct.discount : accumulator, 0)
-
     const total = prices.reduce((accumulator, currentPrice) => accumulator + currentPrice, 0)
     const totalWithDiscount = discountedPrices.reduce((accumulator, currentPrice) => accumulator + currentPrice, 0)
 

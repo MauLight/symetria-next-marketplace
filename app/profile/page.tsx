@@ -9,7 +9,6 @@ export default async function Page() {
 
     const session = await auth()
 
-    //* Connect to the database and list all products
     async function getUser() {
         try {
             await dbConnect()
