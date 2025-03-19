@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 import Fallback from '@/app/ui/Fallback'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function Confirmation({ userId }: { userId: string }) {
     const router = useRouter()

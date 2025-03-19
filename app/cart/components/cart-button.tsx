@@ -3,7 +3,7 @@ import axios from 'axios'
 import { v4 as uuid } from 'uuid'
 import { useRouter } from 'next/navigation'
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function CartButton({ total }: { total: number }) {
 

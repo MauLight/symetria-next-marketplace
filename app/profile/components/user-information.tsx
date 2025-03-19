@@ -26,7 +26,7 @@ const schema = z.object({
     country: z.string({ required_error: 'Country is required.' }).min(2),
 })
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function UserInformation({ id, firstname, lastname, email, phone, street, street_number, house_number, state, city, country, zipcode }: {
     id: string,

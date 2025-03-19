@@ -25,7 +25,7 @@ const paymentSteps = [
     }
 ]
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function ShippingOptions({ id, firstname, lastname, email, phone, street, street_number, house_number, state, city, country, zipcode }: {
     id: string;
