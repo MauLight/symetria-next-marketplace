@@ -19,6 +19,7 @@ export default async function Page() {
         try {
             await dbConnect()
             const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email }).populate('wishlist')
+            console.log(user, 'THE USER in fetch')
             return user
         } catch (error) {
             console.log(error)
@@ -26,6 +27,7 @@ export default async function Page() {
     }
 
     const user = await getUser()
+    console.log(user, 'THE USER')
 
     return (
         <div className='w-[1440px] h-full flex flex-col pt-[150px]'>
