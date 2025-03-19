@@ -14,7 +14,8 @@ interface DescriptionProps {
     image: string;
 }
 
-const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
+const backUrl = 'https://symetria.ngrok.io'
+//const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function CartButtons({ userId, id, title, discount, price, image }: DescriptionProps) {
 
@@ -34,12 +35,13 @@ export default function CartButtons({ userId, id, title, discount, price, image 
     async function handleWishlistProduct() {
         try {
 
-            await axios.post(`${url}/api/wishlist`, { userId, productId: id })
+            await axios.post(`${backUrl}/auth/wishlist`, { userId, productId: id })
             toast.success('Product added to wishlist.')
 
         } catch (error) {
             setDisabled(true)
             console.error(error)
+            toast.error('Product is already in wishlist.')
         }
     }
 
