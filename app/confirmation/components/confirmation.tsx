@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import Fallback from '@/app/ui/Fallback'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
+import { useCart } from '@/app/context/cartContext'
 
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
@@ -15,19 +16,22 @@ export default function Confirmation({ userId }: { userId: string }) {
     const searchParams = useSearchParams()
     const token = searchParams.get('token_ws')
 
+    const { cleanCart } = useCart()
+
     const [buyOrder, setBuyOrder] = useState<string | undefined>('')
     const [isLoading, setIsLoading] = useState<boolean>(true)
 
     async function handleConfirmationAsync() {
 
         if (token && buyOrder !== '') {
-            console.log('1. fetch')
             const { data } = await axios.post(`${url}/api/transbank/confirm`, { userId, token, buyOrder })
 
             if (data.status === 'AUTHORIZED') {
                 setIsLoading(false)
                 localStorage.removeItem('marketplace-cart')
                 localStorage.removeItem('transbank-order')
+                cleanCart()
+
                 setTimeout(() => {
                     router.push('/')
                 }, 4000)

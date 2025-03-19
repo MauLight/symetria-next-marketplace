@@ -4,18 +4,19 @@ import React, { createContext, useContext, useState, useEffect } from "react"
 import { toast } from "react-toastify"
 
 export interface ProductProps {
-    id: string;
-    title: string;
-    discount: number;
-    price: number;
-    image: string;
-    quantity: number;
+    id: string
+    title: string
+    discount: number
+    price: number
+    image: string
+    quantity: number
 }
 
 interface CartContextType {
-    cart: ProductProps[];
-    addToCart: (product: Omit<ProductProps, "quantity">) => void;
-    subtractFromCart: (product: Omit<ProductProps, "quantity">) => void;
+    cart: ProductProps[]
+    addToCart: (product: Omit<ProductProps, "quantity">) => void
+    subtractFromCart: (product: Omit<ProductProps, "quantity">) => void
+    cleanCart: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -65,8 +66,12 @@ export const CartProvider: React.FC<React.PropsWithChildren<object>> = ({ childr
         })
     }
 
+    const cleanCart = () => {
+        setCart([])
+    }
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, subtractFromCart }}>
+        <CartContext.Provider value={{ cart, addToCart, subtractFromCart, cleanCart }}>
             {children}
         </CartContext.Provider>
     )
