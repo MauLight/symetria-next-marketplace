@@ -12,7 +12,7 @@ export async function GET(request: Request) {
 
     try {
         const { data } = await axios.get(
-            `http://testservices.wschilexpress.com/georeference/api/v1/coverage-areas?RegionCode=${regionCode}&type=${type}`
+            `https://testservices.wschilexpress.com/georeference/api/v1/coverage-areas?RegionCode=${regionCode}&type=${type}`
         )
         console.log(data)
         return NextResponse.json({ data }, { status: 200 })
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     try {
         // Get coverage areas for the given region
         const coverageResponse = await axios.get(
-            `http://testservices.wschilexpress.com/georeference/api/v1/coverage-areas?RegionCode=${regionCode.toString()}&type=0`
+            `https://testservices.wschilexpress.com/georeference/api/v1/coverage-areas?RegionCode=${regionCode.toString()}&type=0`
         )
         const deliveryZones = coverageResponse.data.coverageAreas
 
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
         // Request rating from the courier API using the destinationCountyCode
         const ratingResponse = await axios.post(
-            'http://testservices.wschilexpress.com/rating/api/v1/rates/courier',
+            'https://testservices.wschilexpress.com/rating/api/v1/rates/courier',
             {
                 originCountyCode: 'STGO',
                 destinationCountyCode,
