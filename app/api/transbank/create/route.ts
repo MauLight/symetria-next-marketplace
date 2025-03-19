@@ -26,6 +26,8 @@ export async function POST(request: Request) {
             new Options(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, Environment.Integration)
         )
 
+        console.log(tx)
+
         // Create the transaction
         const response = await tx.create(buyOrder, sessionId, amount, returnUrl)
 
