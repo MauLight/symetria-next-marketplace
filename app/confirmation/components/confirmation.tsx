@@ -8,6 +8,8 @@ import React, { useEffect, useState } from 'react'
 import Fallback from '@/app/ui/Fallback'
 import { CheckCircleIcon } from '@heroicons/react/24/outline'
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+
 export default function Confirmation({ userId }: { userId: string }) {
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -20,8 +22,7 @@ export default function Confirmation({ userId }: { userId: string }) {
 
         if (token && buyOrder !== '') {
             console.log('1. fetch')
-            const { data } = await axios.post(`http://localhost:3000/api/transbank/confirm`, { userId, token, buyOrder })
-            console.log('THE DATA', data)
+            const { data } = await axios.post(`${url}/api/transbank/confirm`, { userId, token, buyOrder })
 
             if (data.status === 'AUTHORIZED') {
                 setIsLoading(false)

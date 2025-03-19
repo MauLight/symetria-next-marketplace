@@ -4,13 +4,15 @@ import { ShoppingCartIcon, TrashIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
 import React from 'react'
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+
 export default function WishlistButtons({ userId, productId }: { userId: string, productId: string }) {
 
     async function handleDeleteProduct() {
         console.log(productId)
 
         try {
-            const { data } = await axios.delete('http://localhost:3000/api/wishlist', {
+            const { data } = await axios.delete(`${url}/api/wishlist`, {
                 data: { userId, productId }
             })
             console.log(data)

@@ -25,6 +25,8 @@ const paymentSteps = [
     }
 ]
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+
 export default function ShippingOptions({ id, firstname, lastname, email, phone, street, street_number, house_number, state, city, country, zipcode }: {
     id: string;
     firstname: string;
@@ -87,7 +89,7 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
                             deliveryTime: 0
                         }
 
-                        const { data } = await axios.post(`http://localhost:3000/api/courier`, destinationData)
+                        const { data } = await axios.post(`${url}/api/courier`, destinationData)
                         console.log(data.data.data.courierServiceOptions)
                         setCourierOptions(data.data.data.courierServiceOptions)
                     } catch (error) {

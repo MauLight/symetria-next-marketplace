@@ -26,6 +26,8 @@ const schema = z.object({
     country: z.string({ required_error: 'Country is required.' }).min(2),
 })
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+
 export default function UserInformation({ id, firstname, lastname, email, phone, street, street_number, house_number, state, city, country, zipcode }: {
     id: string,
     firstname: string;
@@ -83,7 +85,7 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
     }) {
         const updatedUser = data
         try {
-            const { data } = await axios.put(`http://localhost:3000/api/user/${id}`, updatedUser)
+            const { data } = await axios.put(`${url}/api/user/${id}`, updatedUser)
             if (data.updatedUser) {
                 toast.success('User updated succesfully.')
                 setEditing(false)
@@ -120,7 +122,7 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
                 const regionCode = regionList.find(region => region.regionName === selectedRegion).regionId
                 if (regionCode) {
                     try {
-                        const { data } = await axios.get(`http://localhost:3000/api/courier?regionCode=${regionCode}&type=${0}`)
+                        const { data } = await axios.get(`${url}/api/courier?regionCode=${regionCode}&type=${0}`)
                         const response = data.data.coverageAreas
                         const counties = response.map((county: Record<string, string>) => county.coverageName)
                         setCountiesList(counties)

@@ -3,9 +3,11 @@ import Order from "@/api/models/Order"
 import { WebpayPlus, Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } from 'transbank-sdk'
 import mongoose from "mongoose"
 
+const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace-jt7f5c21g-maulights-projects.vercel.app'
+
 export async function POST(request: Request) {
     const { sessionId, amount } = await request.json()
-    const returnUrl = 'http://localhost:3000/confirmation'
+    const returnUrl = `${url}/confirmation`
 
     if (!sessionId || !amount) {
         return NextResponse.json(
