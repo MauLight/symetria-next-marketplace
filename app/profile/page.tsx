@@ -1,6 +1,8 @@
 export const revalidate = 60;
 
 import User from "@/api/models/User"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import Product from "@/api/models/Product";
 import dbConnect from "@/api/mongoose"
 import { auth } from "@/auth"
 import mongoose from "mongoose"
@@ -14,13 +16,12 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline"
 export default async function Page() {
 
     const session = await auth()
-    console.log(session, 'THE SESSION')
 
     async function getUser() {
         try {
             await dbConnect()
-            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email })
-            console.log(user, 'THE USER in fetch')
+
+            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email }).populate('wishlist')
             return user
         } catch (error) {
             console.log(error)
@@ -28,7 +29,6 @@ export default async function Page() {
     }
 
     const user = await getUser()
-    console.log(user, 'THE USER')
 
     return (
         <div className='w-[1440px] h-full flex flex-col pt-[150px]'>
