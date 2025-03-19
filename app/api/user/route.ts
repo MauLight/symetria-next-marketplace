@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import dbConnect from "@/api/mongoose"
 import mongoose from "mongoose"
 import User from "@/api/models/User"
+import Product from "@/api/models/Product"
 
 import { auth } from '@/auth'
 
@@ -14,6 +15,7 @@ export async function GET() {
         }
 
         await dbConnect()
+        await (Product as mongoose.Model<InstanceType<typeof Product>>).find({})
 
         const user = await (User as mongoose.Model<InstanceType<typeof User>>)
             .findOne({ email: session.user.email })

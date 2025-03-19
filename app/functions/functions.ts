@@ -1,5 +1,12 @@
 import { toast } from "react-toastify"
-import { ProductProps } from "../types/types"
+import { DecodedProps, ProductProps } from "../types/types"
+import axios from "axios";
+import { Dispatch, SetStateAction } from "react";
+import { jwtDecode } from "jwt-decode"
+import CryptoJS from 'crypto-js'
+
+const cloudinaryApiSecret = process.env.VITE_CLOUDINARY_APISECRET
+const CloudinaryCloudName = process.env.VITE_CLOUDINARY_CLOUDNAME
 
 interface DescriptionProps {
     id: string;
@@ -7,6 +14,12 @@ interface DescriptionProps {
     discount: number;
     price: number;
     image: string;
+}
+
+interface CloudinaryResponseData {
+    secure_url: string;
+    public_id: string;
+    // add additional response fields as needed
 }
 
 
@@ -47,4 +60,43 @@ export function addToCart({ id, title, discount, price, image }: DescriptionProp
     }
 
     toast.success('Product added to cart.')
+}
+
+export const postToCloudinary = async (formData: FormData, setError?: Dispatch<SetStateAction<string | null>>): Promise<CloudinaryResponseData | unknown> => {
+    try {
+        const { data } = await axios.post(`https://api.cloudinary.com/v1_1/${CloudinaryCloudName}/image/upload`, formData)
+        return data
+    } catch (error) {
+        console.log(error)
+        if (setError) {
+            setError((error as Record<string, string>).message)
+        }
+        return error
+    }
+}
+
+export function handleDecodeToken(token: string) {
+
+    const decoded: DecodedProps = jwtDecode(token)
+    const currentTime = Date.now() / 1000
+
+    if (decoded.role !== 'admin') {
+        toast.error('Wrong credentials.')
+        return false
+    }
+
+    if (decoded.exp < currentTime) {
+        toast.error('Token expired, please try again.')
+        return false
+    }
+
+    return true
+}
+
+export function generateSignature(params: { public_id: string, timestamp: number }): string {
+    const sortedParams = Object.keys(params).sort().map(key => `${key}=${params[key as keyof typeof params]}`).join('&')
+    const stringToSign = `${sortedParams}${cloudinaryApiSecret}`
+    const hash = CryptoJS.SHA1(stringToSign)
+
+    return hash.toString(CryptoJS.enc.Hex)
 }
