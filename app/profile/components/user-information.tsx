@@ -99,7 +99,7 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
         async function getRegions() {
             setCourierIsLoading(true)
             try {
-                const { data } = await axios.get('http://testservices.wschilexpress.com/georeference/api/v1/regions')
+                const { data } = await axios.get('https://testservices.wschilexpress.com/georeference/api/v1/regions')
                 //@ts-expect-error region type missing
                 setRegionNameList(data.regions.map((region) => region.regionName))
                 setRegionList(data.regions)

@@ -75,7 +75,7 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
 
         async function getCourier() {
             try {
-                const { data } = await axios.get('http://testservices.wschilexpress.com/georeference/api/v1/regions')
+                const { data } = await axios.get('https://testservices.wschilexpress.com/georeference/api/v1/regions')
                 //@ts-expect-error region type missing
                 const currRegion = data.regions.find((region) => region.regionName === state)
                 console.log(currRegion)
