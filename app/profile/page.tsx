@@ -14,11 +14,12 @@ import { PlusCircleIcon } from "@heroicons/react/24/outline"
 export default async function Page() {
 
     const session = await auth()
+    console.log(session, 'THE SESSION')
 
     async function getUser() {
         try {
             await dbConnect()
-            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email }).populate('wishlist')
+            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email })
             console.log(user, 'THE USER in fetch')
             return user
         } catch (error) {
