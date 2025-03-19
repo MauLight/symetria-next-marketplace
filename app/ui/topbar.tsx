@@ -1,7 +1,8 @@
-import { PowerIcon, MagnifyingGlassIcon, UserIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { PowerIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
 import { signOut } from '@/auth'
 import React from 'react'
 import Link from 'next/link'
+import CartHub from './cart-hub'
 
 export default function Topbar() {
     return (
@@ -22,10 +23,7 @@ export default function Topbar() {
                         Profile
                     </Link>
 
-                    <Link className='flex gap-x-2 items-center text-[#a1a1a1] hover:text-[#ededed] transition-color duration-300' href='/cart'>
-                        <ShoppingCartIcon className="w-4 h-4" />
-                        Your Cart
-                    </Link>
+                    <CartHub />
 
                     <form
                         action={async () => {
