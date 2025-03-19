@@ -1,9 +1,15 @@
+export const revalidate = 60;
+
 import User from "@/api/models/User"
 import dbConnect from "@/api/mongoose"
 import { auth } from "@/auth"
 import mongoose from "mongoose"
 import UserInformation from "./components/user-information"
-import { ShoppingCartIcon } from "@heroicons/react/24/outline"
+import { ProductProps } from "../types/types"
+import { getPercentage } from "../functions/functions"
+import Image from "next/image"
+import WishlistButtons from "./components/wishlist-buttons"
+import { PlusCircleIcon } from "@heroicons/react/24/outline"
 
 export default async function Page() {
 
@@ -12,7 +18,7 @@ export default async function Page() {
     async function getUser() {
         try {
             await dbConnect()
-            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email })
+            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email }).populate('wishlist')
             return user
         } catch (error) {
             console.log(error)
@@ -48,21 +54,36 @@ export default async function Page() {
                         <h1 className="text-[1.5rem]">Wishlist</h1>
                         <>
                             {
-                                Array.from({ length: 3 }).map((_, i) => (
-                                    <div key={i} className="w-full h-[120px] flex items-center justify-between py-2 px-5 border border-[#292929] rounded-[6px]">
-                                        <div className="flex gap-x-5">
-                                            <div className="w-[100px] h-[100px] border border-[#292929]"></div>
-                                            <div className="flex flex-col justify-center">
-                                                <h1 className="text-[1.2rem]">Title</h1>
-                                                <p className="text-[#a1a1a1]">Price</p>
-                                            </div>
+                                user.wishlist.length > 0 ? (
+                                    <>
+                                        {
+                                            user.wishlist.map((product: ProductProps) => (
+                                                <div key={product.id} className="w-full h-[120px] flex items-center justify-between py-2 px-5 border border-[#292929] rounded-[6px]">
+                                                    <div className="flex gap-x-5">
+                                                        <div className="w-[100px] h-[100px] border border-[#292929]">
+                                                            <Image width={100} height={100} src={product.images[0].image} alt={product.title} />
+                                                        </div>
+                                                        <div className="flex flex-col justify-center">
+                                                            <h1 className="text-[1.2rem]">{product.title}</h1>
+                                                            <p className="text-[#a1a1a1]">${getPercentage(product.discount as number, product.price)}</p>
+                                                        </div>
+                                                    </div>
+                                                    <WishlistButtons
+                                                        userId={user.id}
+                                                        productId={product.id}
+                                                    />
+                                                </div>
+                                            ))
+                                        }
+                                    </>
+                                )
+                                    :
+                                    (
+                                        <div className="w-full flex flex-col gap-y-4 p-10 justify-center items-center border border-[#292929] rounded-[6px]">
+                                            <PlusCircleIcon className="w-[50px] h-[50px] text-[#292929]" />
+                                            <h2 className="text-[#ededed]">Add Items to your Wishlist.</h2>
                                         </div>
-                                        <button className="flex flex-col items-center text-[#a1a1a1] hover:text-green-500 transition-color duration-300">
-                                            <ShoppingCartIcon className="w-6 h-6" />
-                                            <small>Add to Cart</small>
-                                        </button>
-                                    </div>
-                                ))
+                                    )
                             }
                         </>
                     </div>
