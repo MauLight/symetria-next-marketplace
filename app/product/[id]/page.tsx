@@ -4,6 +4,8 @@ import mongoose from "mongoose"
 import Image from "next/image"
 import { getPercentage } from "@/app/functions/functions"
 import CartButtons from "../components/cart-buttons"
+import { auth } from "@/auth"
+import User from "@/api/models/User"
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
 
@@ -15,6 +17,20 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     if (!product) {
         return <div>Product not found.</div>
     }
+
+    const session = await auth()
+
+    async function getUser() {
+        try {
+            await dbConnect()
+            const user = await (User as mongoose.Model<InstanceType<typeof User>>).findOne({ email: session?.user?.email })
+            return user
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const user = await getUser()
 
     return (
         <div className="w-full h-screen flex justify-center items-center">
@@ -40,6 +56,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
                     </div>
                     <CartButtons
+                        userId={user.id}
                         id={product.id}
                         title={product.title}
                         discount={product.discount as number}
