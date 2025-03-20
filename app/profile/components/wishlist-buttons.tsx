@@ -46,14 +46,14 @@ export default function WishlistButtons({ userId, title, discount, price, image,
     }
 
     return (
-        <div className="flex gap-x-10">
+        <div className="flex gap-x-5 sm:gap-x-10">
             <button onClick={handleAddToCart} className="flex flex-col items-center text-[#a1a1a1] hover:text-green-500 transition-color duration-300">
-                <ShoppingCartIcon className="w-6 h-6" />
-                <small>Add to Cart</small>
+                <ShoppingCartIcon className="w-6 h-6 max-[350px]:w-4 max-[350px]:h-4" />
+                <small className='max-[350px]:hidden block'>Add to Cart</small>
             </button>
             <button onClick={handleDeleteProduct} className="flex flex-col items-center text-[#a1a1a1] hover:text-red-500 transition-color duration-300">
-                <TrashIcon className="w-6 h-6" />
-                <small>Delete</small>
+                <TrashIcon className="w-6 h-6 max-[350px]:w-4 max-[350px]:h-4" />
+                <small className='max-[350px]:hidden block'>Delete</small>
             </button>
         </div>
     )
