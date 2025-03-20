@@ -7,7 +7,7 @@ import MobileMenu from './mobile-menu'
 
 export default function Topbar() {
     return (
-        <nav className="fixed w-full flex justify-center items-center z-20 bg-black max-sm:pl-5">
+        <nav className="fixed w-full flex justify-center items-center z-20 bg-black max-md:pl-5 max-md:pr-2 md:max-[1440px]:px-5">
             <div className='w-full max-w-[1440px] h-[60px] flex justify-between items-center border-b border-[#292929]'>
                 <Link href={'/home'}>
                     <h1 className='text-[1.1rem] text-[#ededed]'>Marketplace</h1>

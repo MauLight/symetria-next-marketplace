@@ -12,7 +12,7 @@ export default function MobileMenu({ action }: { action: () => Promise<void> }) 
     const [isOpen, setOpen] = useState(false)
 
     return (
-        <>
+        <div className='max-md:block hidden'>
             <Hamburger toggled={isOpen} toggle={setOpen} size={18} color='#ededed' />
             <Modal bgColor='black' width='w-[90%]' openModal={isOpen} handleOpenModal={() => { setOpen(!isOpen) }}>
                 <>
@@ -41,6 +41,6 @@ export default function MobileMenu({ action }: { action: () => Promise<void> }) 
                     </div>
                 </>
             </Modal>
-        </>
+        </div>
     )
 }
