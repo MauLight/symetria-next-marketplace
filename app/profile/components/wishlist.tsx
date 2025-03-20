@@ -15,7 +15,7 @@ export default function Wishlist({ userId }: { userId: string }) {
     const [wishlist, setWishlist] = useState<ProductProps[]>([])
 
     useEffect(() => {
-        async function getUserById() {
+        async function getUser() {
             try {
                 const { data } = await axios.get(`${url}/api/user`)
                 setWishlist(data.wishlist)
@@ -24,7 +24,7 @@ export default function Wishlist({ userId }: { userId: string }) {
             }
         }
 
-        getUserById()
+        getUser()
     }, [])
 
     return (

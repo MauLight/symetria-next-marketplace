@@ -26,6 +26,7 @@ const schema = z.object({
     country: z.string({ required_error: 'Country is required.' }).min(2),
 })
 
+const backUrl = 'https://symetria.ngrok.io'
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
 export default function UserInformation({ id, firstname, lastname, email, phone, street, street_number, house_number, state, city, country, zipcode }: {
@@ -85,7 +86,7 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
     }) {
         const updatedUser = data
         try {
-            const { data } = await axios.put(`${url}/api/user/${id}`, updatedUser)
+            const { data } = await axios.put(`${backUrl}/auth/user/${id}`, updatedUser)
             if (data.updatedUser) {
                 toast.success('User updated succesfully.')
                 setEditing(false)
