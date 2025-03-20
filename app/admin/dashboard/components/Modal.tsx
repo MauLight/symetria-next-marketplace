@@ -8,9 +8,10 @@ interface ModalProps {
   handleOpenModal: () => void
   width?: string
   height?: string
+  bgColor?: string
 }
 
-export const Modal = ({ width, height, children, openModal, handleOpenModal }: ModalProps): ReactElement => {
+export const Modal = ({ width, height, children, openModal, handleOpenModal, bgColor }: ModalProps): ReactElement => {
   return (
     <Transition appear show={openModal} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={handleOpenModal}>
@@ -38,7 +39,7 @@ export const Modal = ({ width, height, children, openModal, handleOpenModal }: M
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel className={`${width ? width : 'w-1/2'} ${height ? height : ''} flex flex-col py-10 px-5 border border-gray-200 rounded-xl bg-[#ffffff] overflow-hidden`}>
+              <DialogPanel className={`${width ? width : 'w-1/2'} ${height ? height : ''} flex flex-col py-10 px-5 border${bgColor ? `${bgColor} border border-[#292929]` : 'bg-[#fff]'} rounded-xl overflow-hidden`}>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

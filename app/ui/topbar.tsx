@@ -3,15 +3,16 @@ import { signOut } from '@/auth'
 import React from 'react'
 import Link from 'next/link'
 import CartHub from './cart-hub'
+import MobileMenu from './mobile-menu'
 
 export default function Topbar() {
     return (
-        <nav className="fixed w-full flex justify-center items-center z-20 bg-black">
-            <div className='w-[1440px] h-[60px] flex justify-between items-center border-b border-[#292929]'>
+        <nav className="fixed w-full flex justify-center items-center z-20 bg-black max-sm:pl-5">
+            <div className='w-full max-w-[1440px] h-[60px] flex justify-between items-center border-b border-[#292929]'>
                 <Link href={'/home'}>
                     <h1 className='text-[1.1rem] text-[#ededed]'>Marketplace</h1>
                 </Link>
-                <div className='flex items-center gap-x-6 text-[0.9rem]'>
+                <div className='hidden md:flex items-center gap-x-6 text-[0.9rem]'>
 
                     <div className='relative group '>
                         <input className='w-[250px] h-10 border border-[#292929] text-[#ededed] outline-none pl-12' type="text" />
@@ -37,6 +38,10 @@ export default function Topbar() {
                         </button>
                     </form>
                 </div>
+                <MobileMenu action={async () => {
+                    'use server';
+                    await signOut({ redirectTo: '/login' })
+                }} />
             </div>
         </nav>
     )
