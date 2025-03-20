@@ -1,5 +1,6 @@
 import { Suspense, type JSX } from 'react'
 import LoginForm from './components/login-form'
+import Fallback from '../ui/Fallback'
 
 export default function Page(): JSX.Element {
 
@@ -20,7 +21,7 @@ export default function Page(): JSX.Element {
 function LoginFallback(): JSX.Element {
     return (
         <div className=''>
-            Loading...
+            <Fallback color='#ededed' />
         </div>
     )
 }
