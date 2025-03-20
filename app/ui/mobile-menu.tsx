@@ -14,7 +14,7 @@ export default function MobileMenu({ action }: { action: () => Promise<void> }) 
     return (
         <div className='max-md:block hidden'>
             <Hamburger toggled={isOpen} toggle={setOpen} size={18} color='#ededed' />
-            <Modal bgColor='black' width='w-[90%]' openModal={isOpen} handleOpenModal={() => { setOpen(!isOpen) }}>
+            <Modal bgColor='bg-black' width='w-[90%]' openModal={isOpen} handleOpenModal={() => { setOpen(!isOpen) }}>
                 <>
                     <div className='flex flex-col justify-center gap-y-5 text-[0.9rem]'>
 

@@ -39,7 +39,7 @@ export const Modal = ({ width, height, children, openModal, handleOpenModal, bgC
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <DialogPanel className={`${width ? width : 'w-1/2'} ${height ? height : ''} flex flex-col py-10 px-5 border${bgColor ? `${bgColor} border border-[#292929]` : 'bg-[#fff]'} rounded-xl overflow-hidden`}>
+              <DialogPanel className={`${width ? width : 'w-1/2'} ${height ? height : ''} flex flex-col py-10 px-5 border${bgColor ? `${bgColor}` : 'bg-[#fff]'} rounded-xl overflow-hidden`}>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
