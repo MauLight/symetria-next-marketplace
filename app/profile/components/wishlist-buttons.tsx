@@ -37,7 +37,6 @@ export default function WishlistButtons({ userId, title, discount, price, image,
 
         try {
             const { data } = await axios.post(`${backUrl}/auth/wishlist/delete`, { userId, productId })
-            console.log(data)
             setWishlist(data.wishlist)
         } catch (error) {
             console.error(error)

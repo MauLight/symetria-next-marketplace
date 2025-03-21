@@ -20,17 +20,17 @@ export default function CartList() {
     const { cart, addToCart, subtractFromCart } = useCart()
 
     return (
-        <div className='col-span-2 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5'>
+        <div className='col-span-2 flex flex-col gap-y-5 min-[800px]:border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5'>
             {
                 cart && cart.length > 0 ? cart.map((product: DescriptionProps) => (
                     <div key={product.id} className="grid grid-cols-4 gap-x-3">
-                        <div className="col-span-1 border border-[#dfdfdf] rounded-[6px]">
+                        <div className="hidden sm:flex col-span-1 border border-[#dfdfdf] rounded-[6px]">
                             <Image src={product.image} width={600} height={400} alt='placeholder' />
                         </div>
-                        <div className="col-span-3 flex justify-between border border-[#dfdfdf] rounded-[6px] py-2 px-5">
+                        <div className="sm:col-span-3 col-span-4 flex justify-between border border-[#dfdfdf] rounded-[6px] py-2 px-5">
                             <div className="flex flex-col">
                                 <Link href={`/product/${product.id}`}>
-                                    <h1 className='text-[1.4rem]'>{product.title}</h1>
+                                    <h1 className='text-[1rem] sm:text-[1.4rem]'>{product.title}</h1>
                                 </Link>
                                 <p>{`$${getPercentage(product.discount, product.price)}`}</p>
                             </div>

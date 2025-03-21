@@ -17,8 +17,8 @@ export default function CartSummary() {
     const totalWithVat = totalWithDiscount + vat
 
     return (
-        <div className="col-span-1 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5">
-            <h1 className='text-[1.5rem]'>Summary</h1>
+        <div className="col-span-1 flex flex-col gap-y-5 border border-[#dfdfdf] shadow-xl shadow-gray-50 rounded-[6px] p-5 max-[800px]:ml-5">
+            <h1 className='text-[1.1rem] sm:text-[1.5rem]'>Summary</h1>
             <div className="flex flex-col gap-y-2">
                 <div className='flex justify-between text-gray-600'>
                     <p>{`${cart.length} Products`}</p>
@@ -30,7 +30,7 @@ export default function CartSummary() {
                 </div>
                 <div className="border-b border-gray-300 my-2"></div>
                 <div>
-                    <div className='flex justify-between text-[1.5rem]'>
+                    <div className='flex justify-between text-[1.2rem] sm:text-[1.5rem]'>
                         <p>Total amount</p>
                         <p>{`$${totalWithVat}(*)`}</p>
                     </div>
