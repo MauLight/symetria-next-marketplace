@@ -108,9 +108,9 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
 
     return (
         <div className="w-full h-full grid grid-cols-3 gap-x-10 pb-20">
-            <section className='h-full col-span-2 flex flex-col gap-y-10'>
+            <section className='h-full col-span-3 min-[800px]:col-span-2 max-[800px]:px-5 flex flex-col gap-y-10'>
                 <div className='w-full flex flex-col'>
-                    <div className="w-full h-[60px] grid grid-cols-2">
+                    <div className="w-full h-[60px] hidden sm:grid grid-cols-2">
                         {
                             paymentSteps.map((step, i) => (
                                 <CheckoutToPaymentStep
@@ -120,6 +120,31 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
                                     current={i === 0 ? one : two}
                                 />
                             ))
+                        }
+                    </div>
+                    <div className="w-full h-[60px] sm:hidden grid sm:grid-cols-2 text-white">
+                        {
+                            one ? (
+                                <div>
+                                    <CheckoutToPaymentStep
+                                        key={paymentSteps[0].id}
+                                        step={paymentSteps[0].step}
+                                        title={paymentSteps[0].title}
+                                        current={one}
+                                    />
+                                </div>
+                            )
+                                :
+                                (
+                                    <div>
+                                        <CheckoutToPaymentStep
+                                            key={paymentSteps[1].id}
+                                            step={paymentSteps[1].step}
+                                            title={paymentSteps[1].title}
+                                            current={two}
+                                        />
+                                    </div>
+                                )
                         }
                     </div>
                 </div>
@@ -201,7 +226,7 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
                                 ))
                             }
                             <div className="flex flex-col items-end">
-                                <div className="w-[400px] flex flex-col gap-y-5 border border-[#292929] p-5 text-[#fff]">
+                                <div className="w-full min-[800px]:w-[400px] flex flex-col gap-y-5 border border-[#292929] p-5 text-[#fff]">
                                     <div className="flex flex-col gap-y-2">
                                         <div className="grid grid-cols-3">
                                             <h1 className="col-span-1 text-[1rem]">{`${cart.length} Items`}</h1>
@@ -232,9 +257,9 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="col-span-1 pt-[120px] px-10">
-                        <div className='h-full col-span-1'>
-                            <section className='flex flex-col gap-y-4 min-h-[400px] pt-0'>
+                        className="col-span-3 min-[800px]:col-span-1 pt-[120px] px-10">
+                        <div className='h-full'>
+                            <section className='flex flex-col gap-y-4 min-[800px]:min-h-[400px] pt-0'>
                                 <div className='bg-[#ffffff] mb-5 rounded-[6px] overflow-hidden'>
                                     <Image width={150} height={44} className='w-full' src="https://res.cloudinary.com/maulight/image/upload/v1734712129/zds7cbfpfhfki1djh3wp.png" alt="webpay" />
                                 </div>
