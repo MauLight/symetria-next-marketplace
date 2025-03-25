@@ -11,6 +11,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
     const urlParams = await params
     const id = urlParams.id
+
+    console.log(id, 'THE ID')
+
     await dbConnect()
     const product = await (Product as mongoose.Model<InstanceType<typeof Product>>).findById(id)
 
