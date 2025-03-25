@@ -23,7 +23,7 @@ export default function SignupForm() {
                             name="firstname"
                             placeholder='First name'
                             aria-describedby='firstname-error'
-                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                         />
                         <input
                             id="lastname"
@@ -31,7 +31,7 @@ export default function SignupForm() {
                             name="lastname"
                             placeholder='Last name'
                             aria-describedby='lastname-error'
-                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                         />
                     </div>
 
@@ -59,7 +59,7 @@ export default function SignupForm() {
                             name="email"
                             placeholder='Email'
                             aria-describedby='email-error'
-                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                         />
                         <div id='email-error' aria-live='polite' aria-atomic='true'>
                             {
@@ -77,7 +77,7 @@ export default function SignupForm() {
                             name="phone"
                             placeholder='Phone'
                             aria-describedby='phone-error'
-                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                         />
                         <div id='phone-error' aria-live='polite' aria-atomic='true'>
                             {
@@ -95,7 +95,7 @@ export default function SignupForm() {
                             name="password"
                             placeholder='Password'
                             aria-describedby='password-error'
-                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                            className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                         />
                         <div id='password-error' aria-live='polite' aria-atomic='true'>
                             {

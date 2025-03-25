@@ -42,14 +42,14 @@ export default function LoginForm() {
                         type="email"
                         name="email"
                         placeholder='Email'
-                        className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                        className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                     />
                     <input
                         id="password"
                         type="password"
                         name="password"
                         placeholder='Password'
-                        className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500'
+                        className='w-full h-9 bg-transparent rounded-[6px] border border-sym-border ring-0 focus:ring-0 focus:outline-none px-2 placeholder-sym_gray-500 text-sym-text-primary'
                     />
                     <input type="hidden" name="redirectTo" value={callbackUrl} />
                     <button onClick={() => { setLoading(true) }} aria-disabled={isPending} type='submit' className='w-full h-10 flex justify-center items-center rounded-[6px] text-[16px] text-sym-text-primary mt-1 uppercase bg-black hover:bg-indigo-500 active:bg-black border border-sym-border'>
