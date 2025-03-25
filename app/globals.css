@@ -11,6 +11,11 @@
   --color-sym_gray-600: #454544;
   --color-sym_gray-700: #2b2b29;
   --color-sym_gray-800: #10100e;
+
+  --color-sym-border: #292929;
+  --color-sym-card: #080808;
+  --color-sym-text-primary: #ededed;
+  --color-sym-text-secondary: #a1a1a1;
 }
 html {
   font-family: "Rubik", sans-serif;

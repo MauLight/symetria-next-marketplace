@@ -11,7 +11,7 @@ export const authConfig = {
             const { pathname } = nextUrl
 
             //* Allow access to public routes
-            if (pathname.startsWith('/login') || pathname.startsWith('/signup') || pathname.startsWith('/admin') || pathname.startsWith('/home') || pathname.startsWith('/product')) return true
+            if (pathname.startsWith('/login') || pathname.startsWith('/sign') || pathname.startsWith('/admin') || pathname.startsWith('/home') || pathname.startsWith('/product')) return true
 
             //* Check if user is logged in if protected routes
             if (pathname.startsWith('/cart') || pathname.startsWith('/checkout') || pathname.startsWith('/confirmation') || pathname.startsWith('/profile')) return isLoggedIn
