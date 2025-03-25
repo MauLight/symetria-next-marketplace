@@ -6,7 +6,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 interface DescriptionProps {
-    userId: string
+    userId?: string
     id: string;
     title: string;
     discount: number;
@@ -48,7 +48,11 @@ export default function CartButtons({ userId, id, title, discount, price, image 
     return (
 
         <div className="flex gap-x-5 max-lg:pt-10 max-lg:items-center max-lg:justify-center">
-            <button disabled={disabled} onClick={handleWishlistProduct} className={`text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300 ${disabled ? 'cursor-not-allowed' : ''}`}>Wishlist</button>
+            {
+                userId && (
+                    <button disabled={disabled} onClick={handleWishlistProduct} className={`text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300 ${disabled ? 'cursor-not-allowed' : ''}`}>Wishlist</button>
+                )
+            }
             <button onClick={handleAddToCart} className="text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300">Add to cart</button>
         </div>
     )
