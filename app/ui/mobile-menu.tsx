@@ -28,7 +28,9 @@ export default function MobileMenu({ action }: { action: () => Promise<void> }) 
                             Profile
                         </Link>
 
-                        <CartHub />
+                        <div>
+                            <CartHub />
+                        </div>
 
                         <form
                             action={action}
