@@ -34,8 +34,8 @@ export default function Hero({ children }: { children: ReactNode }) {
                         variants={fadeIn('top', 0.2)}
                         initial={'hidden'}
                         whileInView={'show'}
-                        className='w-full text-[2.2rem] z-auto min-[400px]:text-[3rem] sm:text-[5rem] max-[400px]:text-center lg:text-[8.5rem] leading-none uppercase animated-background bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 inline-block text-transparent font-semibold tracking-tight bg-clip-text max-sm:px-5'>Marketplace</motion.h1>
-                    <p className='w-full text-[0.9rem] max-[400px]:text-center max-sm:px-5 sm:text-[1.2rem] text-[#fff] z-10 text-balance leading-tight'>The best place to buy stuff</p>
+                        className='w-full text-center text-[2.2rem] z-auto min-[400px]:text-[3rem] sm:text-[5rem] max-[400px]:text-center lg:text-[8.5rem] leading-none uppercase animated-background bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 inline-block text-transparent font-semibold tracking-tight bg-clip-text max-sm:px-5'>Marketplace</motion.h1>
+                    <p className='max-lg:text-center lg:pl-[7%] text-[1rem] max-[400px]:text-center max-sm:px-5 sm:text-[1.2rem] text-[#fff] z-10 text-balance leading-tight'>The best place to buy stuff</p>
                 </div>
             </div>
             <div className="h-[5%]"></div>
