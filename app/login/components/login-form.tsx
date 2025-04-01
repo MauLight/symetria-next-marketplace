@@ -32,7 +32,7 @@ export default function LoginForm() {
 
     return (
         <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center'>
-            <main className='min-h-[400px] w-[300px] flex flex-col rounded-[10px] px-7 pb-2 bg-black gap-y-5 pt-9 z-20 border border-sym-border'>
+            <main className='min-h-[420px] w-[300px] flex flex-col justify-center pb-4 rounded-[10px] px-7 bg-black gap-y-5 z-20 border border-sym-border shadow-xl shadow-black'>
 
                 <h1 className='font-body text-sym-text-primary text-4xl text-center uppercase'>Welcome</h1>
 

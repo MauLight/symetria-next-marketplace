@@ -261,7 +261,7 @@ export default function ShippingOptions({ id, firstname, lastname, email, phone,
                         <div className='h-full'>
                             <section className='flex flex-col gap-y-4 min-[800px]:min-h-[400px] pt-0'>
                                 <div className='bg-[#ffffff] mb-5 rounded-[6px] overflow-hidden'>
-                                    <Image width={150} height={44} className='w-full' src="https://res.cloudinary.com/maulight/image/upload/v1734712129/zds7cbfpfhfki1djh3wp.png" alt="webpay" />
+                                    <Image width={150} height={44} className='w-full' src="https://res.cloudinary.com/maulight/image/upload/v1743510411/w5nkjcn2cb95uan603qb.jpg" alt="webpay" />
                                 </div>
 
                                 <form method="post" action={transbank?.url}>
