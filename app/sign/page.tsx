@@ -1,6 +1,7 @@
 import { Suspense, type JSX } from 'react'
 import SignupForm from './components/signup-form'
 import SignTopbar from '../ui/signTopbar'
+import Fallback from '../ui/Fallback'
 
 export default function Page(): JSX.Element {
     return (
@@ -31,8 +32,8 @@ export default function Page(): JSX.Element {
 
 function LoginFallback(): JSX.Element {
     return (
-        <div className=''>
-            Loading...
+        <div className='w-screen h-screen'>
+            <Fallback color='#ededed' />
         </div>
     )
 }

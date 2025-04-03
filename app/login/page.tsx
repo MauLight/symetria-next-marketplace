@@ -32,7 +32,7 @@ export default function Page(): JSX.Element {
 
 function LoginFallback(): JSX.Element {
     return (
-        <div className=''>
+        <div className='w-screen h-screen'>
             <Fallback color='#ededed' />
         </div>
     )
