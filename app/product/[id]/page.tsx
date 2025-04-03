@@ -6,6 +6,8 @@ import { getPercentage } from "@/app/functions/functions"
 import CartButtons from "../components/cart-buttons"
 import { auth } from "@/auth"
 import User from "@/api/models/User"
+import { ArrowLongLeftIcon, NoSymbolIcon } from "@heroicons/react/24/outline"
+import Link from "next/link"
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
 
@@ -13,10 +15,31 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     const id = urlParams.id
 
     await dbConnect()
-    const product = await (Product as mongoose.Model<InstanceType<typeof Product>>).findById(id)
+
+    async function getProduct() {
+        try {
+            const product = await (Product as mongoose.Model<InstanceType<typeof Product>>).findById(id)
+            return product
+        } catch (error) {
+            console.log('here')
+            console.error(error)
+        }
+        return null
+    }
+
+    const product = await getProduct()
 
     if (!product) {
-        return <div>Product not found.</div>
+        return <div className="text-white w-full h-screen flex flex-col justify-center items-center gap-y-5">
+            <div className="flex gap-x-2 items-center text-[1.2rem]">
+                <NoSymbolIcon className="w-8 h-8" />
+                Product not found.
+            </div>
+            <Link href={'/'} className="flex items-center gap-x-2 text-sym-text-secondary hover:text-sym-text-primary transition-color duration-300">
+                <ArrowLongLeftIcon className="w-6 h-6" />
+                Return
+            </Link>
+        </div>
     }
 
     const session = await auth()
