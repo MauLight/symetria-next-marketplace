@@ -24,9 +24,11 @@ export default function Carousel(): ReactNode {
     const [measure, setMeasure] = useState<number>(0)
     const [pause, setPause] = useState<boolean>(false)
 
+    const initialX = 378 - 990
+
     useEffect(() => {
         let timer: NodeJS.Timeout; // or number if using browser types
-
+        console.log(measure)
         if (!pause) {
             if (measure < assets.length - 1) {
                 timer = setTimeout(() => {
@@ -48,44 +50,66 @@ export default function Carousel(): ReactNode {
 
     return (
         <div className='relative w-full h-[667px]'>
-            <div className='relative w-full'>
+            <div className='relative w-full h-full'>
                 <motion.div
-                    initial={{ x: 378 }}
-                    animate={{ x: 378 - (990 * measure) }}
+                    initial={{ x: initialX }}
+                    animate={{ x: initialX - (990 * measure) }}
                     transition={{
                         duration: 1,
                         type: 'spring',
                         bounce: 0.5,
                         stiffness: 30
                     }}
-                    className="flex w-[calc(970px*3+20px*2)] justify-between">
+                    className="flex w-[calc(970px*7+20px*5)] h-full justify-between">
                     {
-                        assets.map((asset, i) => {
+                        [assets[2], ...assets, ...assets].map((asset, i) => {
                             if (asset.type === 'image') {
                                 return (
-                                    <Image
+                                    <div
+                                        key={asset.url + '-' + i}
+                                        className='relative h-full'
                                         onMouseEnter={() => { setPause(true) }}
                                         onMouseLeave={() => { setPause(false) }}
-                                        key={asset.url + '-' + i}
-                                        width={970}
-                                        height={667}
-                                        className='w-[970px] object-cover rounded-[4px]'
-                                        src={asset.url}
-                                        alt='image'
-                                    />
+                                    >
+                                        <Image
+                                            width={970}
+                                            height={667}
+                                            className={`w-[970px] h-full object-cover rounded-[6px] ${measure === (i - 1) ? '' : 'grayscale'} transition-all duration-500`}
+                                            src={asset.url}
+                                            alt='image'
+                                        />
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: measure === (i - 1) ? 0 : 0.3 }}
+                                            transition={{ duration: 0.8 }}
+                                            className='absolute z-20 w-full h-full left-0 top-0 bg-[var(--theme-light-background-color)]'>
+                                        </motion.div>
+                                    </div>
                                 )
                             } else {
                                 return (
-                                    <video
+                                    <div
+                                        key={asset.url + '-' + i}
+                                        className='relative h-full'
                                         onMouseEnter={() => { setPause(true) }}
                                         onMouseLeave={() => { setPause(false) }}
-                                        loop
-                                        muted
-                                        autoPlay
-                                        src={asset.url}
-                                        key={asset.url + '-' + i}
-                                        className='w-[970px] object-cover rounded-[4px]'
-                                    />
+                                    >
+
+                                        <video
+                                            loop
+                                            muted
+                                            autoPlay
+                                            src={asset.url}
+                                            key={asset.url + '-' + i}
+                                            className={`w-[970px] h-full object-cover rounded-[6px] ${measure === (i - 1) ? '' : 'grayscale'} transition-all duration-500`}
+                                        />
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: measure === (i - 1) ? 0 : 0.3 }}
+                                            transition={{ duration: 0.8 }}
+                                            className='absolute z-20 w-full h-full left-0 top-0 bg-[var(--theme-light-background-color)]'>
+                                        </motion.div>
+                                    </div>
                                 )
                             }
                         })

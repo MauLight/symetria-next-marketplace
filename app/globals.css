@@ -16,6 +16,10 @@
   --color-sym-card: #080808;
   --color-sym-text-primary: #ededed;
   --color-sym-text-secondary: #a1a1a1;
+
+  /* Background color */
+  --theme-light-background-color: #f8f8ff;
+  --theme-dark-background-color: black;
 }
 html {
   font-family: "Barlow";
