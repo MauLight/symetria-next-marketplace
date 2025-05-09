@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify'
 
 const ClientSideToastContainer = () => <ToastContainer
     position='top-right'
-    autoClose={4000}
+    autoClose={3000}
     hideProgressBar={true}
     closeOnClick
     pauseOnHover

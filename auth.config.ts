@@ -17,7 +17,7 @@ export const authConfig = {
             if (pathname.startsWith('/cart') || pathname.startsWith('/checkout') || pathname.startsWith('/confirmation') || pathname.startsWith('/profile')) return isLoggedIn
 
             //* Redirect to login if not logged in
-            return isLoggedIn ? Response.redirect(new URL('/home', nextUrl)) : false
+            return isLoggedIn ? Response.redirect(new URL('/home', nextUrl)) : Response.redirect(new URL('/home', nextUrl))
         }
     }
 } satisfies NextAuthConfig
