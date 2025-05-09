@@ -11,7 +11,7 @@ const assets = [
     },
     {
         type: 'video',
-        url: '/ear.webm'
+        url: '/Ear.webm'
     },
     {
         type: 'image',
