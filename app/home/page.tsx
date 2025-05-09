@@ -6,6 +6,7 @@ import mongoose from "mongoose"
 import { ProductProps } from "../types/types"
 import ProductCard from "./components/product-card"
 import Link from "next/link"
+import Carousel from "./components/carousel"
 
 //* Connect to the database and list all products
 async function listProducts() {
@@ -67,6 +68,11 @@ export default async function Page() {
                     }
                 </div>
             </section>
+
+            <section className="h-[950px] w-screen flex justify-center items-center overflow-hidden">
+                <Carousel />
+            </section>
+
             <section className="w-full max-w-[1440px] grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
                 {
                     products?.map((product: ProductProps) => (
