@@ -67,7 +67,7 @@ export default function Carousel(): ReactNode {
                                 return (
                                     <div
                                         key={asset.url + '-' + i}
-                                        className='relative h-full'
+                                        className='relative h-full overflow-hidden'
                                         onMouseEnter={() => { setPause(true) }}
                                         onMouseLeave={() => { setPause(false) }}
                                     >
@@ -84,6 +84,25 @@ export default function Carousel(): ReactNode {
                                             transition={{ duration: 0.8 }}
                                             className='absolute z-20 w-full h-full left-0 top-0 bg-[var(--theme-light-background-color)]'>
                                         </motion.div>
+
+                                        <div className="absolute w-full h-full top-0 left-0 z-50 flex items-end py-15">
+                                            <div className="flex justify-start items-center gap-x-5 w-full h-[45px] px-10">
+                                                <motion.button
+                                                    key={1}
+                                                    initial={{ y: 100, opacity: 0 }}
+                                                    animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
+                                                    transition={{ duration: 0.8, delay: 0 }}
+                                                    className='h-full px-6 rounded-full bg-[var(--theme-light-background-color)]'>Learn more</motion.button>
+                                                <motion.p
+                                                    key={2}
+                                                    initial={{ y: 100, opacity: 0 }}
+                                                    animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
+                                                    transition={{ duration: 0.8, delay: 0.1 }}
+                                                    className='text-sym-text-secondary'><b className='text-sym-text-primary pr-5'>Nothing Ear(A)</b>Made for every part of every day, Ear (a) is for the music lovers.</motion.p>
+                                            </div>
+                                        </div>
+
+                                        <div className="absolute w-full h-full top-0 left-0 z-40 bg-gradient-to-t from-black from-0% to-transparent to-40%" />
                                     </div>
                                 )
                             } else {
@@ -109,6 +128,23 @@ export default function Carousel(): ReactNode {
                                             transition={{ duration: 0.8 }}
                                             className='absolute z-20 w-full h-full left-0 top-0 bg-[var(--theme-light-background-color)]'>
                                         </motion.div>
+                                        <div className="absolute w-full h-full top-0 left-0 z-50 flex items-end py-15">
+                                            <div className="flex justify-start items-center gap-x-5 w-full h-[45px] px-10">
+                                                <motion.button
+                                                    key={1}
+                                                    initial={{ y: 100, opacity: 0 }}
+                                                    animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
+                                                    transition={{ duration: 0.8, delay: 0 }}
+                                                    className='h-full px-6 rounded-full bg-[var(--theme-light-background-color)]'>Learn more</motion.button>
+                                                <motion.p
+                                                    key={2}
+                                                    initial={{ y: 100, opacity: 0 }}
+                                                    animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
+                                                    transition={{ duration: 0.8, delay: 0.1 }}
+                                                    className='text-sym-text-secondary'><b className='text-sym-text-primary pr-5'>Nothing Ear(A)</b>Made for every part of every day, Ear (a) is for the music lovers.</motion.p>
+                                            </div>
+                                        </div>
+                                        <div className="absolute w-full h-full top-0 left-0 z-40 bg-gradient-to-t from-black from-0% to-transparent to-40%"></div>
                                     </div>
                                 )
                             }
