@@ -34,8 +34,6 @@ export async function POST(request: Request) {
 
         const response = await tx.commit(token)
 
-        console.log(response, 'THE RESPONSE')
-
         if (response.status === 'AUTHORIZED') {
             order.status = 'completed'
             await order.save()

@@ -7,16 +7,22 @@ import { motion } from 'motion/react'
 const assets = [
     {
         type: 'image',
-        url: 'https://res.cloudinary.com/maulight/image/upload/v1746766727/f2yx9sxiiqg7eem49nzy.jpg'
+        url: 'https://res.cloudinary.com/maulight/image/upload/v1746766727/f2yx9sxiiqg7eem49nzy.jpg',
+        title: 'Nothing Ear(A)',
+        description: 'Made for every part of every day, Ear (a) is for the music lovers.'
     },
     {
         type: 'video',
-        url: '/Ear.webm'
+        url: '/Ear.webm',
+        title: 'Nothing Ear(A)',
+        description: 'Made for every part of every day, Ear (a) is for the music lovers.'
     },
     {
         type: 'image',
-        url: 'https://res.cloudinary.com/maulight/image/upload/v1746777462/yuyrcdopkw4gprcjnjms.jpg'
-    },
+        url: 'https://res.cloudinary.com/maulight/image/upload/v1746777462/yuyrcdopkw4gprcjnjms.jpg',
+        title: 'AirPods 4',
+        description: 'The next evolution of sound and comfort.'
+    }
 ]
 
 export default function Carousel(): ReactNode {
@@ -33,11 +39,11 @@ export default function Carousel(): ReactNode {
             if (measure < assets.length - 1) {
                 timer = setTimeout(() => {
                     setMeasure((prev) => prev + 1)
-                }, 4000)
+                }, 5000)
             } else {
                 timer = setTimeout(() => {
                     setMeasure(0)
-                }, 4000)
+                }, 5000)
             }
         }
 
@@ -93,12 +99,18 @@ export default function Carousel(): ReactNode {
                                                     animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
                                                     transition={{ duration: 0.8, delay: 0 }}
                                                     className='h-full px-6 rounded-full bg-[var(--theme-light-background-color)]'>Learn more</motion.button>
+                                                <motion.div
+                                                    initial={{ y: 100, opacity: 0 }}
+                                                    animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
+                                                    transition={{ duration: 0.8, delay: 0.06 }}
+                                                    className='p-0 m-0 border-l border-sym-text-secondary h-1/2'>
+                                                </motion.div>
                                                 <motion.p
                                                     key={2}
                                                     initial={{ y: 100, opacity: 0 }}
                                                     animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
                                                     transition={{ duration: 0.8, delay: 0.1 }}
-                                                    className='text-sym-text-secondary'><b className='text-sym-text-primary pr-5'>Nothing Ear(A)</b>Made for every part of every day, Ear (a) is for the music lovers.</motion.p>
+                                                    className='text-sym-text-secondary'><b className='text-sym-text-primary pr-5'>{asset.title}</b>{asset.description}</motion.p>
                                             </div>
                                         </div>
 
@@ -136,6 +148,12 @@ export default function Carousel(): ReactNode {
                                                     animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
                                                     transition={{ duration: 0.8, delay: 0 }}
                                                     className='h-full px-6 rounded-full bg-[var(--theme-light-background-color)]'>Learn more</motion.button>
+                                                <motion.div
+                                                    initial={{ y: 100, opacity: 0 }}
+                                                    animate={{ y: measure === (i - 1) ? 0 : 100, opacity: measure === (i - 1) ? 100 : 0 }}
+                                                    transition={{ duration: 0.8, delay: 0.06 }}
+                                                    className='p-0 m-0 border-l border-sym-text-secondary h-1/2'>
+                                                </motion.div>
                                                 <motion.p
                                                     key={2}
                                                     initial={{ y: 100, opacity: 0 }}
