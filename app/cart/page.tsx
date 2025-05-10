@@ -3,8 +3,11 @@ import CartList from './components/cart-list'
 import CartSummary from './components/cart-summary'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { auth } from '@/auth'
 
-export default function Page() {
+export default async function Page() {
+
+    const session = await auth()
 
     return (
         <div className='w-full h-full flex justify-center items-start mt-[60px]'>
@@ -21,7 +24,7 @@ export default function Page() {
                 <div className="grid grid-cols-1 min-[800px]:grid-cols-3 gap-x-5">
 
                     <CartList />
-                    <CartSummary />
+                    <CartSummary session={session} />
 
                 </div>
             </div>

@@ -3,8 +3,9 @@
 import { useCart } from "@/app/context/cartContext"
 import { getPercentage } from '@/app/functions/functions'
 import CartButton from "./cart-button"
+import { Session } from "next-auth"
 
-export default function CartSummary() {
+export default function CartSummary({ session }: { session: Session | null }) {
 
     const { cart } = useCart()
     const prices = cart.map((product) => product.price)
@@ -37,7 +38,7 @@ export default function CartSummary() {
                     <p className="text-end text-gray-800 text-[0.8rem]">{`(*) Includes19% VAT`}</p>
                 </div>
             </div>
-            <CartButton total={totalWithVat} />
+            <CartButton session={session} total={totalWithVat} />
         </div>
     )
 }

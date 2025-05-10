@@ -1,17 +1,25 @@
 'use client'
-import axios from 'axios'
-import { v4 as uuid } from 'uuid'
+
 import { useRouter } from 'next/navigation'
+import { Session } from 'next-auth'
+import { v4 as uuid } from 'uuid'
+import axios from 'axios'
 
 const backUrl = 'https://symetria.ngrok.io'
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
-export default function CartButton({ total }: { total: number }) {
+export default function CartButton({ total, session }: { total: number, session: Session | null }) {
 
     const router = useRouter()
     const isBtnDisabled = total === 0
 
     async function handleTransbankCreateTransaction() {
+
+        if (!session) {
+            router.push('/login')
+            return
+        }
+
         const sessionId = `session-${Date.now().toString()}-${uuid()}`
         const returnUrl = `${url}/confirmation`
         const paymentInformation = { sessionId, amount: total, returnUrl }

@@ -69,7 +69,7 @@ export default async function Page() {
                 </div>
             </section>
 
-            <section className="bg-[var(--theme-light-background-color)] py-10 w-screen flex justify-center items-center overflow-hidden">
+            <section className="border border-sym-border py-10 w-screen flex justify-center items-center overflow-hidden">
                 <Carousel />
             </section>
 
