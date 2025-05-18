@@ -12,8 +12,8 @@ export default async function Topbar() {
     console.log(session)
 
     return (
-        <nav className="fixed w-full flex justify-center items-center z-20 max-md:pl-5 max-md:pr-2 md:max-[1440px]:px-5 bg-sym-light dark:bg-black">
-            <div className='w-full max-w-[1440px] h-[60px] flex justify-between items-center border-b border-sym-border-light dark:border-sym-border'>
+        <nav className="fixed w-full flex justify-center items-center z-20 max-md:pl-5 max-md:pr-2 md:max-[1440px]:px-5 bg-sym-light dark:bg-black border-b border-sym-border-light dark:border-sym-border">
+            <div className='w-full max-w-[1440px] h-[60px] flex justify-between items-center'>
                 <Link href={'/home'}>
                     <h1 className='text-[1.1rem] text-sym-text-light-focus dark:text-sym-text-primary'>Marketplace</h1>
                 </Link>
