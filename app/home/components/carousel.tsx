@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useEffect, useState, type ReactNode } from 'react'
 import { motion } from 'motion/react'
-import useMeasure from 'react-use-measure'
 
 const assets = [
     {
@@ -30,7 +29,6 @@ export default function Carousel(): ReactNode {
 
     const [measure, setMeasure] = useState<number>(0)
     const [pause, setPause] = useState<boolean>(false)
-    const [ref, bounds] = useMeasure()
 
     const initialX = (window.innerWidth - 970) / 2 - 990
 
@@ -53,12 +51,8 @@ export default function Carousel(): ReactNode {
         }
     }, [measure, pause])
 
-    useEffect(() => {
-        console.log(bounds.width)
-    }, [bounds])
-
     return (
-        <div ref={ref} className='relative w-full h-[667px]'>
+        <div className='relative w-full h-[667px]'>
             <div className='relative w-full h-full'>
                 <motion.div
                     initial={{ x: initialX }}

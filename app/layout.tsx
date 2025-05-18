@@ -19,16 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ThemeProvider>
-        <body
-          className='antialiased'
-        >
+      <body
+        className='antialiased'
+      >
+        <ThemeProvider>
           <ClientSideToastContainer />
           <CartProvider>
             {children}
           </CartProvider>
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
