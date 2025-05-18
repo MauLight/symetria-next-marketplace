@@ -53,7 +53,7 @@ export default function Carousel(): ReactNode {
 
     return (
         <div className='relative w-full h-[667px]'>
-            <div className='relative w-full h-full'>
+            <div className='relative w-full h-full '>
                 <motion.div
                     initial={{ x: initialX }}
                     animate={{ x: initialX - (990 * measure) }}
@@ -70,7 +70,7 @@ export default function Carousel(): ReactNode {
                                 return (
                                     <div
                                         key={asset.url + '-' + i}
-                                        className='relative h-full overflow-hidden'
+                                        className='relative h-full overflow-hidden rounded-[6px]'
                                         onMouseEnter={() => { setPause(true) }}
                                         onMouseLeave={() => { setPause(false) }}
                                     >
@@ -118,7 +118,7 @@ export default function Carousel(): ReactNode {
                                 return (
                                     <div
                                         key={asset.url + '-' + i}
-                                        className='relative h-full'
+                                        className='relative h-full overflow-hidden rounded-[6px]'
                                         onMouseEnter={() => { setPause(true) }}
                                         onMouseLeave={() => { setPause(false) }}
                                     >

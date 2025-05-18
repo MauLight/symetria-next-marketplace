@@ -42,7 +42,7 @@ export default async function Page() {
                 </div>
             </section>
 
-            <section className="border-y border-sym-border py-10 w-screen flex justify-center items-center overflow-hidden">
+            <section className="border-y border-sym-border-light dark:border-sym-border py-10 w-screen flex justify-center items-center overflow-hidden">
                 <Carousel />
             </section>
 

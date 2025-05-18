@@ -5,7 +5,7 @@ import ProductDescription from "./product-description"
 
 export default async function ProductCard({ product }: { product: ProductProps }) {
     return (
-        <div key={product.id} className="group relative h-[450px] col-span-1 overflow-hidden rounded-[6px]">
+        <div key={product.id} className="group relative h-[450px] col-span-1 overflow-hidden rounded-[6px] border-sym-border-light dark:border-sym-border border">
 
             <div className='h-full w-full overflow-hidden'>
                 <Image width={1200} height={1200} key={product.id} src={product.images[0].image} alt="product" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ease-out" />
