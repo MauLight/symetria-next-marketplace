@@ -50,10 +50,10 @@ export default function CartButtons({ userId, id, title, discount, price, image 
         <div className="flex gap-x-5 max-lg:pt-10 max-lg:items-center max-lg:justify-center">
             {
                 userId && (
-                    <button disabled={disabled} onClick={handleWishlistProduct} className={`text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300 ${disabled ? 'cursor-not-allowed' : ''}`}>Wishlist</button>
+                    <button disabled={disabled} onClick={handleWishlistProduct} className={`text-sym-text-light-focus dark:text-sym-text-primary w-[200px] py-2 mt-5 rounded-[6px] border border-sym-border-light dark:border-sym-border bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300 ${disabled ? 'cursor-not-allowed' : ''}`}>Wishlist</button>
                 )
             }
-            <button onClick={handleAddToCart} className="text-[#ededed] w-[200px] py-2 mt-5 rounded-[6px] border border-[#ededed]bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300">Add to cart</button>
+            <button onClick={handleAddToCart} className="text-sym-text-light-focus dark:text-sym-text-primary w-[200px] py-2 mt-5 rounded-[6px] border border-sym-border-light dark:border-sym-border bg-transparent hover:bg-[#ededed] hover:text-[#080808] transition-all duration-300">Add to cart</button>
         </div>
     )
 }

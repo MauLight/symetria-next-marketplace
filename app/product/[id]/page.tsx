@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
     return (
         <div className="w-full lg:h-screen flex justify-center items-center">
-            <div className="w-full max-w-[1440px] grid grid-cols-1 lg:grid-cols-2 gap-x-10 max-lg:pt-[60px] border border-[#292929] bg-[#080808] rounded-[8px] overflow-hidden">
+            <div className="w-full max-w-[1440px] grid grid-cols-1 lg:grid-cols-2 gap-x-10 max-lg:pt-[60px] border border-sym-border-light dark:border-sym-border rounded-[8px] overflow-hidden">
 
                 <div className="h-full w-full">
                     <Image className="w-full h-full object-cover" width={500} height={500} src={product.images[0].image} alt={product.title} />
@@ -68,15 +68,15 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
                     <div className="flex flex-col gap-y-10">
                         <div className="flex flex-col gap-y-2">
-                            <h1 className="text-[1.5rem] sm:text-[2rem] text-[#ededed]">{product.title}</h1>
-                            <div className="w-full border-b border-[#292929]"></div>
+                            <h1 className="text-[1.5rem] sm:text-[2rem] text-sym-text-light-focus dark:text-sym-text-primary">{product.title}</h1>
+                            <div className="w-full border-b border-sym-border-light dark:border-sym-border"></div>
                             <div className="relative">
-                                <p className="text-[#ededed] text-[1rem] sm:text-[1.3rem]">{`$${getPercentage(product.discount, product.price)}`}</p>
+                                <p className="text-sym-text-light-focus dark:text-sym-text-primary text-[1rem] sm:text-[1.3rem]">{`$${getPercentage(product.discount, product.price)}`}</p>
                                 <div className="absolute top-0 left-24 py-1 px-2 animated-background bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-[0.8rem] sm:text-[0.9rem] rounded-[6px]">{`${product.discount}% OFF`}</div>
                             </div>
                         </div>
 
-                        <p className="text-[#eaeaea] max-sm:text-[0.9rem] text-balance">{product.description}</p>
+                        <p className="text-sym-text-light dark:text-sym-text-primary max-sm:text-[0.9rem] text-balance">{product.description}</p>
 
                     </div>
                     <CartButtons

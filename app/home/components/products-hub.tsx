@@ -12,7 +12,7 @@ export default function ProductsHub({ products }: { products: ProductProps[] }) 
                     <Link
                         href={`/product/${product.id}`}
                         key={`id-${product.id}`}
-                        className="relative group w-[120px] sm:w-[180px] h-[120px] sm:h-[180px] cursor-pointer rounded-[6px] overflow-hidden dark:glass border border-sym-border-light dark:border-sym-border">
+                        className="relative group w-[120px] sm:w-[180px] h-[120px] sm:h-[180px] cursor-pointer rounded-[6px] overflow-hidden glass border border-sym-border-light dark:border-sym-border">
                         <Image width={180} height={180} className="h-full scale-90 object-cover z-0 rounded-[4px] group-hover:scale-105 transition-all duration-500" src={product.images[0].image} alt={product.title} />
                         <div className="absolute hidden dark:flex top-0 left-0 w-full h-full bg-radial from-20% from-transparent to-[#10100e] opacity-20"></div>
                         <div
