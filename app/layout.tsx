@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import ClientSideToastContainer from "./toastify"
 import { CartProvider } from "./context/cartContext"
+import { ThemeProvider } from "./context/themeContext"
 
 export const metadata: Metadata = {
   title: "Ctlst eCommerce",
@@ -18,14 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className='antialiased'
-      >
-        <ClientSideToastContainer />
-        <CartProvider>
-          {children}
-        </CartProvider>
-      </body>
+      <ThemeProvider>
+        <body
+          className='antialiased'
+        >
+          <ClientSideToastContainer />
+          <CartProvider>
+            {children}
+          </CartProvider>
+        </body>
+      </ThemeProvider>
     </html>
   )
 }

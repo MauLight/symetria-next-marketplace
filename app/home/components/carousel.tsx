@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useState, type ReactNode } from 'react'
 import { motion } from 'motion/react'
+import useMeasure from 'react-use-measure'
 
 const assets = [
     {
@@ -19,7 +20,7 @@ const assets = [
     },
     {
         type: 'image',
-        url: 'https://res.cloudinary.com/maulight/image/upload/v1746777462/yuyrcdopkw4gprcjnjms.jpg',
+        url: 'https://res.cloudinary.com/maulight/image/upload/v1746888383/nulyowjmcb9o6njihvwf.jpg',
         title: 'AirPods 4',
         description: 'The next evolution of sound and comfort.'
     }
@@ -29,12 +30,12 @@ export default function Carousel(): ReactNode {
 
     const [measure, setMeasure] = useState<number>(0)
     const [pause, setPause] = useState<boolean>(false)
+    const [ref, bounds] = useMeasure()
 
-    const initialX = 378 - 990
+    const initialX = (window.innerWidth - 970) / 2 - 990
 
     useEffect(() => {
-        let timer: NodeJS.Timeout; // or number if using browser types
-        console.log(measure)
+        let timer: NodeJS.Timeout
         if (!pause) {
             if (measure < assets.length - 1) {
                 timer = setTimeout(() => {
@@ -52,10 +53,12 @@ export default function Carousel(): ReactNode {
         }
     }, [measure, pause])
 
-    //-1600
+    useEffect(() => {
+        console.log(bounds.width)
+    }, [bounds])
 
     return (
-        <div className='relative w-full h-[667px]'>
+        <div ref={ref} className='relative w-full h-[667px]'>
             <div className='relative w-full h-full'>
                 <motion.div
                     initial={{ x: initialX }}
@@ -66,7 +69,7 @@ export default function Carousel(): ReactNode {
                         bounce: 0.5,
                         stiffness: 30
                     }}
-                    className="flex w-[calc(970px*7+20px*5)] h-full justify-between">
+                    className="flex w-[calc(970px*7+20px*5)] h-full justify-between shrink-0">
                     {
                         [assets[2], ...assets, ...assets].map((asset, i) => {
                             if (asset.type === 'image') {
