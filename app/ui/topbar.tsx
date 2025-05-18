@@ -12,19 +12,19 @@ export default async function Topbar() {
     console.log(session)
 
     return (
-        <nav className="fixed w-full flex justify-center items-center z-20 bg-black max-md:pl-5 max-md:pr-2 md:max-[1440px]:px-5">
-            <div className='w-full max-w-[1440px] h-[60px] flex justify-between items-center border-b border-[#292929]'>
+        <nav className="fixed w-full flex justify-center items-center z-20 max-md:pl-5 max-md:pr-2 md:max-[1440px]:px-5 bg-sym-light dark:bg-black">
+            <div className='w-full max-w-[1440px] h-[60px] flex justify-between items-center border-b border-sym-border-light dark:border-sym-border'>
                 <Link href={'/home'}>
-                    <h1 className='text-[1.1rem] text-[#ededed]'>Marketplace</h1>
+                    <h1 className='text-[1.1rem] text-sym-text-light-focus dark:text-sym-text-primary'>Marketplace</h1>
                 </Link>
                 <div className='hidden md:flex items-center gap-x-8 text-[0.9rem]'>
 
                     <div className='relative group '>
-                        <input className='w-[250px] h-10 border border-[#292929] text-[#ededed] outline-none pl-12' type="text" />
-                        <MagnifyingGlassIcon className='absolute top-2 text-gray-500 group-hover:text-[#ededed] left-2 w-7 h-7 transition-color duration-300' />
+                        <input className='w-[250px] h-10 border border-sym-border-light dark:border-sym-border text-sym-text-light dark:text-sym-text-primary outline-none pl-12 rounded-[4px]' type="text" />
+                        <MagnifyingGlassIcon className='absolute top-2 text-gray-400 dark:text-gray-500 group-hover:text-sym-text-primary left-2 w-6 h-6 transition-color duration-300' />
                     </div>
 
-                    <Link className='flex gap-x-1 items-center text-[#a1a1a1] hover:text-[#ededed] transition-color duration-300' href='/profile'>
+                    <Link className='flex gap-x-1 items-center text-sym-text-light dark:text-sym-text-secondary hover:text-sym-text-light-focus dark:hover:text-sym-text-primary transition-color duration-300' href='/profile'>
                         <UserIcon className="w-4 h-4" />
                         Profile
                     </Link>
@@ -37,7 +37,7 @@ export default async function Topbar() {
                             await signOut({ redirectTo: '/login' })
                         }}
                     >
-                        <button className="flex text-[#a1a1a1] hover:text-[#ededed] transition-color duration-300 items-center justify-center gap-x-1 px-2 cursor-pointer">
+                        <button className="flex text-sym-text-light dark:text-sym-text-secondary hover:text-sym-text-light-focus dark:hover:text-sym-text-primary transition-color duration-300 items-center justify-center gap-x-1 px-2 cursor-pointer">
                             <PowerIcon className="w-4 h-4" />
                             <div className="text-[0.9rem]">{session ? 'Sign Out' : 'Sign In'}</div>
                         </button>
