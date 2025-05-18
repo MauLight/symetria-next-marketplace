@@ -31,8 +31,8 @@ export default async function Page() {
 
             <section className="flex flex-col gap-y-10">
                 <div>
-                    <h1 className='text-[2.5rem] leading-12 text-[#ededed]'>Profile</h1>
-                    <p className='text-[1rem] text-[#a1a1a1]'>Edit your personal information and wishlist.</p>
+                    <h1 className='text-[2.5rem] leading-12 text-sym-text-light-focus dark:text-sym-text-primary'>Profile</h1>
+                    <p className='text-[1rem] text-sym-text-light dark:text-sym-text-secondary'>Edit your personal information and wishlist.</p>
                 </div>
                 <div className="w-full grid grid-cols-1 lg:grid-cols-3">
                     <UserInformation

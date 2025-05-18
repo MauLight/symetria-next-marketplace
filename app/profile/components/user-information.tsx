@@ -152,15 +152,15 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
                         onSubmit={handleSubmit(submitForm)}
-                        className="flex flex-col gap-y-8 p-5 text-[#ededed]">
+                        className="flex flex-col gap-y-8 p-5 text-sym-text-light-focus dark:text-sym-text-primary">
 
 
                         <ErrorWrapper error={errors.firstname?.message}>
 
                             <div className="flex gap-x-5 items-center">
                                 <div className="flex gap-x-2">
-                                    <input {...register("firstname")} type="text" placeholder={`${firstname}`} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
-                                    <input {...register("lastname")} type="text" placeholder={`${lastname}`} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
+                                    <input {...register("firstname")} type="text" placeholder={`${firstname}`} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
+                                    <input {...register("lastname")} type="text" placeholder={`${lastname}`} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
                                 </div>
                                 <button type="submit">
                                     <CloudArrowUpIcon className="w-5 h-5 hover:text-green-500 transition-color duration-300" />
@@ -175,11 +175,11 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
                             <div className="flex flex-col gap-y-3">
 
                                 <ErrorWrapper error={errors.email?.message}>
-                                    <input {...register('email')} type="text" placeholder={email} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
+                                    <input {...register('email')} type="text" placeholder={email} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
                                 </ErrorWrapper>
 
                                 <ErrorWrapper error={errors.phone?.message}>
-                                    <input {...register('phone')} type="text" placeholder={String(phone)} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
+                                    <input {...register('phone')} type="text" placeholder={String(phone)} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
                                 </ErrorWrapper>
 
                             </div>
@@ -187,7 +187,7 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
                         <div className="flex flex-col gap-y-2 pr-10">
                             <h2 className="uppercase text-[0.8rem]">Address</h2>
                             <div className="flex flex-col gap-y-3">
-                                <input type="text" placeholder={street} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
+                                <input type="text" placeholder={street} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
 
                                 <CustomDropdownWithCreate
                                     value='state'
@@ -207,8 +207,8 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
                                     error={courierHasError}
                                 />
 
-                                <input type="text" placeholder={country} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
-                                <input type="text" placeholder={String(zipcode)} className="w-full h-[32px] px-5 border border-[#292929] rounded-[6px]" />
+                                <input type="text" placeholder={country} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
+                                <input type="text" placeholder={String(zipcode)} className="w-full h-[32px] px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]" />
                             </div>
                         </div>
                     </motion.form>
@@ -220,7 +220,7 @@ export default function UserInformation({ id, firstname, lastname, email, phone,
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5 }}
-                            className="flex flex-col gap-y-8 p-5 text-[#ededed]">
+                            className="flex flex-col gap-y-8 p-5 text-sym-text-light-focus dark:text-sym-text-primary">
                             <div className="flex gap-x-5 items-center">
                                 <h1 className="text-[1.5rem]">{`${firstname} ${lastname}`}</h1>
                                 <button onClick={() => { setEditing(!editing) }}>
