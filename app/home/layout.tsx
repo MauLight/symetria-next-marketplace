@@ -8,7 +8,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
             <Topbar />
 
-            <div className="">
+            <div className="pt-[65px]">
                 {children}
             </div>
 

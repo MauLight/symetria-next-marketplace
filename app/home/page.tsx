@@ -8,6 +8,7 @@ import ProductCard from "./components/product-card"
 import ProductsHub from "./components/products-hub"
 import Carousel from "./components/carousel"
 import Hero from "./components/hero"
+import DoubleHero from "./components/double-hero"
 
 //* Connect to the database and list all products
 async function listProducts() {
@@ -23,11 +24,13 @@ async function listProducts() {
 export default async function Page() {
 
     const products = await listProducts()
-    console.log(products, 'THE PRODUCTS')
 
     return (
         <div className="flex flex-col items-center gap-y-20">
-            <section className="relative h-[950px] border w-screen flex justify-center items-center overflow-hidden">
+
+            <DoubleHero />
+
+            <section className="relative h-[950px] w-screen flex justify-center items-center overflow-hidden">
 
                 <HeroMatrix />
 
