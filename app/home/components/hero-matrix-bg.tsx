@@ -23,6 +23,7 @@ export default function HeroMatrix() {
                 xGap={12}
                 yGap={36}
             />
+            <div className="absolute top-0 left-0 w-screen h-full bg-radial from-20% from-transparent via-sym-light dark:via-black via-80% to-sym-light dark:to-black overflow-hidden opacity-80"></div>
         </div>
     )
 }

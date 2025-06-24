@@ -20,6 +20,7 @@
     "bcryptjs": "^3.0.2",
     "compressorjs": "^1.2.1",
     "crypto-js": "^4.2.0",
+    "framer-motion": "^12.19.1",
     "hamburger-react": "^2.5.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.12.1",
