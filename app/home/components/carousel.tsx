@@ -30,7 +30,11 @@ export default function Carousel(): ReactNode {
     const [measure, setMeasure] = useState<number>(0)
     const [pause, setPause] = useState<boolean>(false)
 
-    const initialX = (window.innerWidth - 970) / 2 - 990
+    const [initialX, setInitialX] = useState<number>(0)
+
+    useEffect(() => {
+        setInitialX((window.innerWidth - 970) / 2 - 990)
+    }, [])
 
     useEffect(() => {
         let timer: NodeJS.Timeout
