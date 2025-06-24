@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     const user = await getUser()
 
     return (
-        <div className="w-full lg:h-screen flex justify-center items-center">
+        <div className="w-full h-full min-h-screen flex justify-center items-center">
             <div className="w-full max-w-[1440px] grid grid-cols-1 lg:grid-cols-2 gap-x-10 max-lg:pt-[60px] border border-sym-border-light dark:border-sym-border rounded-[8px] overflow-hidden">
 
                 <div className="h-full w-full">
