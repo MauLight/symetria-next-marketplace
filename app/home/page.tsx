@@ -60,45 +60,52 @@ export default async function Page() {
                 }
             </section>
 
-            <section className="w-full max-w-[1440px] grid grid-cols-4 h-[500px]">
-                <Newsletter />
-                <div className="col-span-1 flex items-center justify-center">
-                    <Links data={socials} />
-                </div>
-                <div className="col-span-1 text-white flex justify-center items-center">
-                    <div className="flex flex-col">
-                        <h2>© 2022 - 2025</h2>
-                        <h2>CTLST CREATIVE CO.</h2>
-                        <div className="h-10"></div>
-                    </div>
-                </div>
-                <div className="col-span-1 flex items-center justify-center">
-                    <Links
-                        justify="justify-end"
-                        data={contracts}
-                    />
-                </div>
-            </section>
+            <Footer />
         </div>
+    )
+}
+
+function Footer() {
+    return (
+        <section className="w-full max-w-[1440px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:h-[300px]">
+            <Newsletter />
+            <div className="col-span-1 flex items-end justify-center">
+                <Links data={socials} />
+            </div>
+            <div className="col-span-1 text-white flex justify-center items-end">
+                <div className="flex flex-col h-[153px] items-start">
+                    <h2>© 2022 - 2025</h2>
+                    <h2>CTLST CREATIVE CO.</h2>
+                    <div className="h-15"></div>
+                </div>
+            </div>
+            <div className="col-span-1 flex items-end justify-center">
+                <Links
+                    justify="justify-end"
+                    data={contracts}
+                />
+            </div>
+        </section>
     )
 }
 
 function Newsletter() {
     return (
-        <div className="col-span-1 flex flex-col justify-center gap-y-5">
-            <div className="h-4"></div>
-            <h2 className="text-white text-balance uppercase">
-                Sign up for the latest products,
-                news & insights
-            </h2>
-            <div className="relative flex flex-col gap-y-2">
-                <input
-                    placeholder="EMAIL ADDRESS"
-                    type="text"
-                    className="h-10 outline-0 text-white"
-                />
-                <div className="border-b w-full border-white" />
-                <ArrowLongRightIcon className="absolute right-0 top-[13px] w-4 h-4 text-white" />
+        <div className="col-span-1 flex flex-col justify-end gap-y-5">
+            <div className="flex flex-col justify-start h-[153px] gap-y-5">
+                <h2 className="text-white text-balance uppercase">
+                    Sign up for the latest products,
+                    news & insights
+                </h2>
+                <div className="relative flex flex-col gap-y-2">
+                    <input
+                        placeholder="EMAIL ADDRESS"
+                        type="text"
+                        className="h-10 outline-0 text-white"
+                    />
+                    <div className="border-b w-full border-white" />
+                    <ArrowLongRightIcon className="absolute right-0 top-[13px] w-4 h-4 text-white" />
+                </div>
             </div>
         </div>
     )
@@ -107,7 +114,7 @@ function Newsletter() {
 function Links({ data, justify }: { data: Array<{ id: string, label: string, url: string }>, justify?: string }) {
     return (
         <div className={`col-span-1 flex ${justify ? justify : 'justify-center'}`}>
-            <div className="flex flex-col items-start gap-y-2 text-white">
+            <div className="flex flex-col items-start h-[153px] gap-y-2 text-white">
                 {
                     data.map((elem) => (
                         <Link

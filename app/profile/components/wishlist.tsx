@@ -1,12 +1,15 @@
 'use client'
 
-import { ProductProps } from '@/app/types/types'
-import Image from 'next/image'
+import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+
+import { ProductProps } from '@/app/types/types'
+
+import Image from 'next/image'
 import WishlistButtons from './wishlist-buttons'
 import { getPercentage } from '@/app/functions/functions'
 import { PlusCircleIcon } from '@heroicons/react/24/outline'
-import axios from 'axios'
 
 const url = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://symetria-next-marketplace.vercel.app'
 
@@ -36,7 +39,13 @@ export default function Wishlist({ userId }: { userId: string }) {
                         <>
                             {
                                 wishlist.map((product: ProductProps) => (
-                                    <div key={product.id} className="w-full h-[120px] flex items-center justify-between py-2 px-2 sm:px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]">
+                                    <motion.div
+                                        initial={{ scale: 1 }}
+                                        whileHover={{ scale: 1.01 }}
+                                        transition={{
+                                            duration: 0.2
+                                        }}
+                                        key={product.id} className="w-full h-[120px] flex items-center justify-between py-2 px-2 sm:px-5 border border-sym-border-light dark:border-sym-border rounded-[6px] cursor-pointer">
                                         <div className="flex gap-x-5">
                                             <div className="hidden sm:block w-[100px] h-[100px] border border-sym-border-light dark:border-sym-border">
                                                 <Image
@@ -61,7 +70,7 @@ export default function Wishlist({ userId }: { userId: string }) {
                                             productId={product.id}
                                             setWishlist={setWishlist}
                                         />
-                                    </div>
+                                    </motion.div>
                                 ))
                             }
                         </>

@@ -3,14 +3,19 @@
 import Noise from '@/blocks/Animations/Noise/Noise'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import useMeasure from 'react-use-measure'
 
 export default function DoubleHero() {
 
     const [ref, bounds] = useMeasure()
 
+    useEffect(() => {
+        console.log(bounds.width)
+    }, [bounds])
+
     return (
-        <div ref={ref} className="w-full max-w-[1440px] h-[850px] flex items-center">
+        <div ref={ref} className="w-full max-w-[1440px] max-lg:py-20 lg:h-[850px] flex max-lg:flex-col max-lg:justify-center items-center">
 
             <HeroBlockWithMarquee
                 url='https://res.cloudinary.com/maulight/image/upload/v1750764741/z1lzbticvx2obapxcfjp.jpg'
@@ -30,8 +35,8 @@ function HeroBlock({ width, url }: { width: number, url: string }) {
         <Link
             href={'/'}
             style={{
-                height: width / 2,
-                width: width / 2
+                height: (width) > 600 ? width / 2 : '100%',
+                width: (width) > 600 ? width / 2 : '100%'
             }}>
             <Image
                 src={url}
@@ -47,10 +52,10 @@ function HeroBlockWithMarquee({ width, url }: { width: number, url: string }) {
     return (
         <Link
             href={'/'}
-            className='relative p-12 overflow-hidden'
+            className='relative p-8 lg:p-12 overflow-hidden'
             style={{
-                height: width / 2,
-                width: width / 2
+                height: (width) > 600 ? (width / 2) : '100%',
+                width: (width) > 600 ? (width / 2) : '100%'
             }}>
             <div className='h-full z-20 overflow-hidden'>
                 <Image
