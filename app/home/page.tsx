@@ -72,7 +72,7 @@ function Footer() {
             <div className="col-span-1 flex items-end justify-center">
                 <Links data={socials} />
             </div>
-            <div className="col-span-1 text-white flex justify-center items-end">
+            <div className="col-span-1 text-black dark:text-white flex justify-center items-end">
                 <div className="flex flex-col h-[153px] items-start">
                     <h2>© 2022 - 2025</h2>
                     <h2>CTLST CREATIVE CO.</h2>
@@ -93,7 +93,7 @@ function Newsletter() {
     return (
         <div className="col-span-1 flex flex-col justify-end gap-y-5">
             <div className="flex flex-col justify-start h-[153px] gap-y-5">
-                <h2 className="text-white text-balance uppercase">
+                <h2 className="text-black dark:text-white text-balance uppercase">
                     Sign up for the latest products,
                     news & insights
                 </h2>
@@ -101,10 +101,10 @@ function Newsletter() {
                     <input
                         placeholder="EMAIL ADDRESS"
                         type="text"
-                        className="h-10 outline-0 text-white"
+                        className="h-10 outline-0 text-black dark:text-white"
                     />
-                    <div className="border-b w-full border-white" />
-                    <ArrowLongRightIcon className="absolute right-0 top-[13px] w-4 h-4 text-white" />
+                    <div className="border-b w-full border-black dark:border-white" />
+                    <ArrowLongRightIcon className="absolute right-0 top-[13px] w-4 h-4 text-black dark:text-white" />
                 </div>
             </div>
         </div>
@@ -114,16 +114,16 @@ function Newsletter() {
 function Links({ data, justify }: { data: Array<{ id: string, label: string, url: string }>, justify?: string }) {
     return (
         <div className={`col-span-1 flex ${justify ? justify : 'justify-center'}`}>
-            <div className="flex flex-col items-start h-[153px] gap-y-2 text-white">
+            <div className="flex flex-col items-start h-[153px] gap-y-2 text-black dark:text-white">
                 {
                     data.map((elem) => (
                         <Link
                             key={elem.id}
                             href={elem.url}
-                            className="flex gap-x-2 items-center uppercase"
+                            className="flex gap-x-2 items-center uppercase hover:text-indigo-500 duration:200"
                         >
                             {elem.label}
-                            <ArrowLongRightIcon className="w-4 h-4 text-white" />
+                            <ArrowLongRightIcon className="w-4 h-4 text-black dark:text-white" />
                         </Link>
                     ))
                 }
