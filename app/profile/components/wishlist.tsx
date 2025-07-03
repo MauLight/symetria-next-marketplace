@@ -39,7 +39,13 @@ export default function Wishlist({ userId }: { userId: string }) {
                                     <div key={product.id} className="w-full h-[120px] flex items-center justify-between py-2 px-2 sm:px-5 border border-sym-border-light dark:border-sym-border rounded-[6px]">
                                         <div className="flex gap-x-5">
                                             <div className="hidden sm:block w-[100px] h-[100px] border border-sym-border-light dark:border-sym-border">
-                                                <Image width={100} height={100} src={product.images[0].image} alt={product.title} />
+                                                <Image
+                                                    width={100}
+                                                    height={100}
+                                                    alt={product.title}
+                                                    src={product.images[0].image}
+                                                    className='h-full object-cover'
+                                                />
                                             </div>
                                             <div className="flex flex-col justify-center">
                                                 <h1 className="text-[1rem] sm:text-[1.2rem] max-sm:truncate max-[350px]:w-[150px]">{product.title}</h1>
